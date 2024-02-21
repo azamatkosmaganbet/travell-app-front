@@ -1,9 +1,9 @@
-import React, { FC, useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
-import "./Login.scss";
-import LoginPhoto from "../../assets/test/login.png";
+import { FC, useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Context } from "../..";
+import LoginPhoto from "../../assets/test/login.png";
+import "./Login.scss";
 const Login: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -63,20 +63,24 @@ const Login: FC = () => {
                 <span>or</span>
               </div>
               <div className="d-flex flex-column">
-              <Button className="my-2 btn-secondary">
-                <i className="bi bi-google"></i>
-                <span className="mx-2">Continue with Google</span>
-              </Button>
-              <Button className="my-2 btn-secondary">
-                <i className="bi bi-facebook"></i>
-                <span className="mx-2">Continue with Facebook</span>
-              </Button>
+                <Button className="my-2 btn-secondary">
+                  <i className="bi bi-google"></i>
+                  <span className="mx-2">Continue with Google</span>
+                </Button>
+                <Button className="my-2 btn-secondary">
+                  <i className="bi bi-facebook"></i>
+                  <span className="mx-2">Continue with Facebook</span>
+                </Button>
               </div>
             </form>
 
             <div className="text-center my-2">
-              <p>Don’t have account? <span className="text-warning">Sign Up</span></p>
+              <p>
+                Don’t have account?{" "}
+                <span className="text-warning">Sign Up</span>
+              </p>
             </div>
+
           </div>
         </div>
       </div>

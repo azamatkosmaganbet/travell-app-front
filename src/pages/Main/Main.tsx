@@ -6,6 +6,7 @@ import Login from "../Login/Login";
 import { Spinner } from "react-bootstrap";
 import { IUser } from "../../models/IUser";
 import { Context } from "../..";
+
 const Main = () => {
   const { store } = useContext(Context);
   const [users, setUsers] = useState<IUser[]>([]);
@@ -23,13 +24,13 @@ const Main = () => {
     );
   }
 
-  if (!store.isAuth) {
-    return (
-      <>
-        <Login /> <button onClick={getUsers}>Получить пользователей</button>
-      </>
-    );
-  }
+  // if (!store.isAuth) {
+  //   return (
+  //     <>
+  //       <Login /> <button onClick={getUsers}>Получить пользователей</button>
+  //     </>
+  //   );
+  // }
 
   async function getUsers() {
     try {

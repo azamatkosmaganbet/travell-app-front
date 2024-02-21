@@ -29,12 +29,31 @@ code {
   padding-bottom: 41px;
 }
 
+.p {
+  color: #363636;
+}
+
 img {
   max-width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+.container-small {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .text-warning {
-  color: #FB6542 !important;
+  color: var(--orange) !important;
+}
+
+.text-blue {
+  color: var(--blue) !important;
+}
+
+:root {
+  --blue: #375e97;
+  --orange: #fb6542;
 }

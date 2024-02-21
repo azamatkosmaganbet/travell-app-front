@@ -37,9 +37,15 @@ export default class Store {
     }
   }
 
-  async registration(email: string, password: string) {
+  async registration(
+    email: string,
+    password: string,
+    name: string,
+    surname: string,
+    phone: string
+  ) {
     try {
-      const response = await AuthService.registration(email, password);
+      const response = await AuthService.registration(email, password, name, surname, phone);
       localStorage.setItem("token", response.data.accessToken);
       console.log(response);
 
@@ -72,13 +78,13 @@ export default class Store {
       localStorage.setItem("token", response.data.accessToken);
       console.log(response);
       console.log(this.isLoading);
-      
+
       this.setAuth(true);
       this.setUser(response.data.user);
     } catch (e: any) {
       console.log(e.response?.data?.message);
     } finally {
-        this.setLoading(false);
+      this.setLoading(false);
     }
   }
 }
