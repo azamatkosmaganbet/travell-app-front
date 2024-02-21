@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
-import { FC, useContext, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { FC, useContext, useEffect, useState } from "react";
+import { Button, Form, Spinner } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../..";
 import LoginPhoto from "../../assets/test/login.png";
 import "./Login.scss";
@@ -8,6 +9,19 @@ const Login: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { store } = useContext(Context);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      store.checkAuth().then(() => {
+        navigate("/");
+      });
+    }
+  }, [navigate, store])
+
+  if (store.isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="main">
@@ -21,10 +35,7 @@ const Login: FC = () => {
             <h1 className="title">Hi, welcome to GO Trip!</h1>
             <form
               className="login-form"
-              onSubmit={(e) => {
-                e.preventDefault(); // Предотвращаем стандартное поведение формы
-                store.login(email, password);
-              }}
+              onSubmit={() => store.login(email, password, navigate)}
             >
               <div className="login-form-block">
                 <Form.Group

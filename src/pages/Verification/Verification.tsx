@@ -5,25 +5,24 @@ import { Context } from "../..";
 import { useNavigate } from "react-router-dom";
 const Verification = () => {
   const { store } = useContext(Context);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       store.checkAuth();
     }
   }, []);
-  console.log(store.user.email);
 
   if (store.isLoading) {
-    return (
-      <div>
-        <Spinner />
-      </div>
-    );
+    return <Spinner />;
   }
 
   if (store.user.isActivated) {
     return <div>Вы успешно верифицировали свой аккаунт</div>;
   }
+
+  console.log(store.user.isActivated);
+  
 
   return (
     <div className="main">

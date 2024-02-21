@@ -4,6 +4,7 @@ import AuthService from "../services/AuthService";
 import axios from "axios";
 import { AuthResponse } from "../models/response/AuthResponse";
 import { API_URL } from "../http";
+import { toast } from "react-toastify";
 
 export default class Store {
   user = {} as IUser;
@@ -26,12 +27,18 @@ export default class Store {
     this.isLoading = bool;
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string, navigate: any) {
+    this.setLoading(true);
     try {
       const response = await AuthService.login(email, password);
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+
+      toast.success("Вы успешно вошли в аккаунт");
+      navigate("/");
+
+      this.setLoading(true);
     } catch (e: any) {
       alert(e.response?.data?.message);
     }
@@ -45,14 +52,22 @@ export default class Store {
     phone: string
   ) {
     try {
-      const response = await AuthService.registration(email, password, name, surname, phone);
+      const response = await AuthService.registration(
+        email,
+        password,
+        name,
+        surname,
+        phone
+      );
       localStorage.setItem("token", response.data.accessToken);
       console.log(response);
 
       this.setAuth(true);
       this.setUser(response.data.user);
+
+      toast.success("Вы успешно зарегистрировались!");
     } catch (e: any) {
-      console.log(e.response?.data?.message);
+      toast.error(e.response?.data?.message);
     }
   }
 

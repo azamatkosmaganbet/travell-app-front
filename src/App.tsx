@@ -4,10 +4,12 @@ import Main from "./pages/Main/Main";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Verification from "./pages/Verification/Verification";
+import Toast from "./components/Toast/Toast";
 
 function App() {
   return (
     <BrowserRouter>
+      <Toast />
       <Routes>
         <Route element={<Main />} path="/" />
         <Route element={<Register />} path="/register" />
