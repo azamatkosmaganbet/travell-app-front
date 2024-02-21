@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Context } from "../..";
 import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import GoogleLogin from "react-google-login";
+import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../..";
 
 const Register = () => {
   const [email, setEmail] = useState<string>("");
@@ -30,9 +29,9 @@ const Register = () => {
     }
   };
 
-   const handleLogin = async (googleData: any) => {
-     console.log(googleData);
-   };
+  const handleLogin = async (googleData: any) => {
+    console.log(googleData);
+  };
 
   return (
     <div>
@@ -109,14 +108,11 @@ const Register = () => {
             </Button>
           </form>
 
-          <GoogleLogin
-            clientId={
-              "630029067406-86sadectpcmrnndhe63pnlo5t8auh3pr.apps.googleusercontent.com"
-            }
-            onSuccess={handleLogin}
-            buttonText="Login with Google"
-            cookiePolicy={"single_host_origin"}
-          ></GoogleLogin>
+          <div className="text-center my-4">
+            <p>
+              Do you have account? <Link to={'/login'} className="text-warning">Login</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
