@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../..";
 
@@ -11,6 +11,7 @@ const Register = () => {
   const [phone, setPhone] = useState<string>("");
   const { store } = useContext(Context);
   const navigate = useNavigate();
+
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -29,9 +30,17 @@ const Register = () => {
     }
   };
 
-  const handleLogin = async (googleData: any) => {
-    console.log(googleData);
-  };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      store.checkAuth().then(() => {
+        navigate("/");
+      });
+    }
+  }, [navigate, store]);
+
+  if (store.isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div>
@@ -110,7 +119,10 @@ const Register = () => {
 
           <div className="text-center my-4">
             <p>
-              Do you have account? <Link to={'/login'} className="text-warning">Login</Link>
+              Do you have account?{" "}
+              <Link to={"/login"} className="text-warning">
+                Login
+              </Link>
             </p>
           </div>
         </div>

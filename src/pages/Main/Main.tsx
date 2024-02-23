@@ -42,7 +42,7 @@ const Main = () => {
   }
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className="main d-flex flex-column align-items-center">
       <h1>
         {store.isAuth
           ? `Пользователь авторизован ${store.user.email}`

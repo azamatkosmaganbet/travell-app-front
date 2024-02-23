@@ -3,6 +3,8 @@ import { Button, Spinner } from "react-bootstrap";
 import Sms from "../../assets/test/sms.png";
 import { Context } from "../..";
 import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import { toast } from "react-toastify";
 const Verification = () => {
   const { store } = useContext(Context);
   const navigate = useNavigate();
@@ -18,11 +20,9 @@ const Verification = () => {
   }
 
   if (store.user.isActivated) {
-    return <div>Вы успешно верифицировали свой аккаунт</div>;
+    navigate("/profile");
+    toast.warning("Вы уже верифицировали свой аккаунт");
   }
-
-  console.log(store.user.isActivated);
-  
 
   return (
     <div className="main">
@@ -34,12 +34,7 @@ const Verification = () => {
           <div className="d-flex flex-column">
             <h1 className="text-blue">You are almost there !</h1>
             <p>Just one more step to get started</p>
-            <Button className="w-100">
-              <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
-                {" "}
-                Activate your account
-              </a>
-            </Button>
+            <Button className="w-100">Activate your account</Button>
             <p className="my-4">
               Didn’t you receive the code? <span>Send it again</span>
             </p>
@@ -50,4 +45,4 @@ const Verification = () => {
   );
 };
 
-export default Verification;
+export default observer(Verification);
