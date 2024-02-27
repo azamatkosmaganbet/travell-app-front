@@ -1,0 +1,31 @@
+.info {
+  &-title {
+    text-align: center;
+  }
+}
+
+.info-blocks {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 60px;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(25% - 10px);
+
+    & span {
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 40px;
+    }
+
+    & p {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+}
