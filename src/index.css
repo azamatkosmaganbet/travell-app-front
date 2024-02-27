@@ -37,8 +37,9 @@ ul {
   padding-bottom: 41px;
 }
 
-.p {
+p {
   color: #363636;
+  margin: 0 !important;
 }
 
 .section {
@@ -72,6 +73,7 @@ img {
 :root {
   --blue: #375e97;
   --orange: #fb6542;
+  --red: #ff0000;
 }
 
 @keyframes expand {

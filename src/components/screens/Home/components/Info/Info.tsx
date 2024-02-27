@@ -1,6 +1,6 @@
 import React from "react";
 import "./Info.scss";
-import { Title } from "../../../UI/Title/Title";
+import { Title } from "../../../../UI/Title/Title";
 const Info = () => {
   return (
     <section className="info section">

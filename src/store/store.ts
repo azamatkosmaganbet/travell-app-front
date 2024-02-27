@@ -5,9 +5,11 @@ import axios from "axios";
 import { AuthResponse } from "../models/response/AuthResponse";
 import { toast } from "react-toastify";
 import { API_URL } from "../constants/api";
+import UserService from "../services/UserService";
 
 export default class Store {
   user = {} as IUser;
+  guides = [] as IUser[];
   isAuth = false;
   isLoading = false;
 
@@ -21,6 +23,10 @@ export default class Store {
 
   setUser(user: IUser) {
     this.user = user;
+  }
+
+  setGuides(guide: IUser[]) {
+    this.guides = guide;
   }
 
   setLoading(bool: boolean) {
@@ -86,12 +92,9 @@ export default class Store {
   async checkAuth() {
     try {
       this.setLoading(true);
-      const response = await axios.get<AuthResponse>(
-        `${API_URL}/refresh`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
+        withCredentials: true,
+      });
 
       localStorage.setItem("token", response.data.accessToken);
       console.log(response);
@@ -110,16 +113,25 @@ export default class Store {
     try {
       const formData = new FormData();
       formData.append("file", avatarFile);
-      const response = await axios.put(
-        `${API_URL}/update/${id}`,
-        formData,
-        {
-          withCredentials: true, // если вам нужны куки при запросе
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.put(`${API_URL}/update/${id}`, formData, {
+        withCredentials: true, // если вам нужны куки при запросе
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
     } catch (e: any) {}
+  }
+
+  async getUsersByRole(role: string) {
+    try {
+      this.setLoading(true);
+      const response = await UserService.fetchUsersByRole(role);
+
+      this.setGuides(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении пользователей");
+    } finally {
+      this.setLoading(false);
+    }
   }
 }
