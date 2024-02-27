@@ -1,15 +1,7 @@
 .profile-info-card {
-  padding: 19px 15px;
   border: 1px solid #b2b1b1;
   border-radius: 12px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  font-size: 20px;
-  margin-bottom: 40px;
-  transition: 0.3s all linear;
-  cursor: pointer;
+  margin-bottom: 30px;
   &:hover {
     background-color: #eeeeee;
     border-color: #eee;
@@ -24,12 +16,22 @@
   border: 1px solid #b2b1b1;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+}
+
+.profile-common-card {
   display: flex;
   align-items: center;
   font-weight: 600;
-  padding: 19px 15px;
+  padding: 10px 15px;
   width: 100%;
-  font-size: 20px;
+  font-size: 16px;
+  transition: 0.3s all linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eeeeee;
+    border-color: #eee;
+  }
 }
 
 .profile-info-combined-card ~ .profile-info-combined-card {

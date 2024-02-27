@@ -16,7 +16,8 @@ const InfoCard: FC<InfoCardProps> = ({ type, title, tag, color }) => {
       <div
         className={classNames(
           type === "solo" && "profile-info-card",
-          type === "combined" && "profile-info-combined-card"
+          type === "combined" && "profile-info-combined-card",
+          "profile-common-card"
         )}
       >
         <span>
@@ -43,7 +44,7 @@ const InfoCard: FC<InfoCardProps> = ({ type, title, tag, color }) => {
             />
           </svg>
         </span>
-        <p className={classNames(color === 'red' && "red", "default")}>{tag}</p>
+        <p className={classNames(color === "red" && "red", "default")}>{tag}</p>
       </div>
     </>
   );
