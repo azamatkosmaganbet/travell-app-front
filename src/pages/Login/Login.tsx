@@ -17,11 +17,21 @@ const Login: FC = () => {
         navigate("/");
       });
     }
-  }, [navigate, store])
+  }, [navigate, store]);
 
   if (store.isLoading) {
-    return <Spinner />;
+    return (
+      <div className="text-center">
+        <Spinner />
+      </div>
+    );
   }
+
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    store.login(email, password, navigate);
+  };
 
   return (
     <div className="main">
@@ -33,10 +43,7 @@ const Login: FC = () => {
 
           <div className="w-50">
             <h1 className="title">Hi, welcome to GO Trip!</h1>
-            <form
-              className="login-form"
-              onSubmit={() => store.login(email, password, navigate)}
-            >
+            <form className="login-form" onSubmit={submitHandler}>
               <div className="login-form-block">
                 <Form.Group
                   className="mb-3"
@@ -91,7 +98,6 @@ const Login: FC = () => {
                 <span className="text-warning">Sign Up</span>
               </p>
             </div>
-
           </div>
         </div>
       </div>

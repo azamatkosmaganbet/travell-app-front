@@ -46,7 +46,8 @@ export default class Store {
 
       this.setLoading(true);
     } catch (e: any) {
-      alert(e.response?.data?.message);
+      toast.error(e.response?.data?.message);
+      this.setLoading(false);
     }
   }
 
