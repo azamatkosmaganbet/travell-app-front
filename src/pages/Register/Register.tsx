@@ -24,7 +24,7 @@ const Register = () => {
       setPassword("");
       setPhone("");
 
-      navigate("/login");
+      navigate("/verification");
     } catch (error) {
       alert("Что то пошло не так");
     }

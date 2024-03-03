@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 import { Title } from "../UI/Title/Title";
 const Hero = () => {
   return (
-    <section className="hero section">
+    <section className="hero">
       <div className="hero-picture">
         <img src={BG} alt="Главная картинка" />
       </div>

@@ -16,12 +16,19 @@ const Verification = () => {
   }, []);
 
   if (store.isLoading) {
-    return <Spinner />;
+    return (
+      <div className="text-center">
+        <Spinner />
+      </div>
+    );
   }
 
   if (store.user.isActivated) {
-    navigate("/profile");
-    toast.warning("Вы уже верифицировали свой аккаунт");
+    return (
+      <div>
+        <h1>Вы успешно верфицировали свой аккаунт !!!</h1>
+      </div>
+    );
   }
 
   return (

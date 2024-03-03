@@ -11,6 +11,9 @@ import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 import { Title } from "../../components/UI/Title/Title";
 import InfoCard from "../../components/InfoCard/InfoCard";
+import { FaUserCircle } from "react-icons/fa";
+import { Spinner } from "react-bootstrap";
+import { MdOutlineVerified } from "react-icons/md";
 const Account = () => {
   const { store } = useContext(Context);
   const fileInputRef = useRef(null);
@@ -37,6 +40,24 @@ const Account = () => {
       store.changeAvatar(id, file);
     }
   };
+
+  if (store.isLoading) {
+    return (
+      <div className="text-center">
+        <Spinner />
+      </div>
+    );
+  }
+
+  // if (!store.isAuth) {
+  //   return (
+  //     <div>
+  //       <div>
+  //         <h1>Привет 👋</h1>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   // if (store.isLoading) {
   //   return (
@@ -76,11 +97,15 @@ const Account = () => {
                       <title>Placeholder</title>
                       <rect width="100%" height="100%" fill="#868e96"></rect>
                     </svg>
-                  ) : (
+                  ) : store.user.avatar ? (
                     <img
                       alt=""
                       src={`http://localhost:5000/${store.user.avatar}`}
                     />
+                  ) : (
+                    <span className="default-user-avatar">
+                      <FaUserCircle />
+                    </span>
                   )}
 
                   <div className="profile-edit">
@@ -110,7 +135,8 @@ const Account = () => {
                 </p>
               ) : (
                 <Title variant="h3">
-                  {store.user.name} {store.user.surname}
+                  {store.user.name} {store.user.surname}{" "}
+                  {store.user.isActivated && <MdOutlineVerified fill="green" />}
                 </Title>
               )}
             </div>

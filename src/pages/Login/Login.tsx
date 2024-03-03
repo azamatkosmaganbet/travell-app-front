@@ -19,13 +19,13 @@ const Login: FC = () => {
     }
   }, [navigate, store]);
 
-  if (store.isLoading) {
-    return (
-      <div className="text-center">
-        <Spinner />
-      </div>
-    );
-  }
+  // if (store.isLoading) {
+  //   return (
+  //     <div className="text-center">
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -120,7 +120,15 @@ export default class Store {
           "Content-Type": "multipart/form-data",
         },
       });
-    } catch (e: any) {}
+
+      toast.success("Вы успешно изменили аватар !");
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } catch (e: any) {
+      toast.error(e.response?.data?.message);
+    }
   }
 
   async getUsersByRole(role: string) {

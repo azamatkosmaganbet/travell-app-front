@@ -1,12 +1,11 @@
 .header {
-  width: 100vw;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
   z-index: 10;
-  bottom: unset;
-  transform: unset;
+  background-color: #fff;
   padding-bottom: 0px;
   transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
     visibility 0.2s ease 0s !important;
@@ -79,14 +78,16 @@
 }
 
 .header.is-sticky {
-  background: #fff;
+  position: fixed;
+  margin: 0;
+  top: 0;
   -webkit-animation-fill-mode: both;
-	animation-fill-mode: both;
-	-webkit-animation-duration: 0.5s;
-	animation-duration: 0.5s;
-	-webkit-animation-name: expand;
-	animation-name: expand;
-	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: expand;
+  animation-name: expand;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
 .header-list-li.active::before {
@@ -137,4 +138,9 @@
     border-radius: 100%;
     padding: 6px;
   }
+}
+
+.header-helper {
+  height: 60px;
+  width: 100%;
 }

@@ -134,3 +134,13 @@
     height: 32px;
   }
 }
+
+.default-user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & svg {
+    font-size: 220px;
+    color: var(--orange);
+  }
+}
