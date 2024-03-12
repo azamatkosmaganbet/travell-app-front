@@ -1,12 +1,45 @@
-import React from "react";
-import BG from "../../assets/test/main.png";
 import "./Hero.scss";
-import { TextField } from "../UI/TextField/TextField";
-import { Button } from "react-bootstrap";
-import { Title } from "../UI/Title/Title";
+import { CiSearch } from "react-icons/ci";
 const Hero = () => {
   return (
-    <section className="hero">
+    <div className="hero">
+      <div className="hero-wrapper">
+        <picture className="hero-picture">
+          <img
+            alt="Найти турмейта"
+            src="https://res.cloudinary.com/localie/image/upload/f_auto,w_1400,,dpr_1.0/v1593608071/content/landing/landingbg_mirrored.jpg"
+          />
+        </picture>
+      </div>
+      <div className="hero-content">
+        <div className="hero-content-inner">
+          <h1>
+            Открывайте новые города <br /> с местными жителями.
+          </h1>
+          <p className="hero-content-inner-desc">
+            Локали покажут свои города так, будто вы приехали в гости к другу.
+          </p>
+          <div className="hero-search">
+            <div className="hero-search-content">
+              <p>Куда отправимся сегодня?</p>
+            </div>
+            <button>
+              <span>
+                <CiSearch />
+              </span>
+              Найти локали
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
+
+{
+  /* <section className="hero">
       <div className="hero-picture">
         <img src={BG} alt="Главная картинка" />
       </div>
@@ -53,8 +86,5 @@ const Hero = () => {
           </button>
         </div>
       </div>
-    </section>
-  );
-};
-
-export default Hero;
+    </section> */
+}

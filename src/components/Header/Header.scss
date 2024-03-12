@@ -1,24 +1,25 @@
 .header {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
+  width: 100vw;
+  position: fixed;
+  left: 0px;
+  right: 0px;
   z-index: 10;
-  background-color: #fff;
-  padding-bottom: 0px;
   transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
     visibility 0.2s ease 0s !important;
+  bottom: unset;
+  transform: unset;
+  padding-bottom: 0px;
 
   &-inner {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
     height: 60px;
-    -webkit-padding-start: 2.5rem;
-    background-color: transparent;
-    padding: 8px 0px;
+    padding-inline-end: 2.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-inline-start: 2.5rem;
+    justify-content: space-between;
+    background: transparent;
   }
 
   &-list {
@@ -87,7 +88,12 @@
   animation-duration: 0.5s;
   -webkit-animation-name: expand;
   animation-name: expand;
+  background: #fff;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
+
+  & svg {
+    color: #000;
+  }
 }
 
 .header-list-li.active::before {
@@ -143,4 +149,105 @@
 .header-helper {
   height: 60px;
   width: 100%;
+}
+
+.header-left {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  width: 100%;
+
+  &-icon {
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    align-items: center;
+    color: inherit;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      background-color: transparent;
+      bottom: -5px;
+      height: 3px;
+      width: 80%;
+      border-top-left-radius: 1px;
+      border-top-right-radius: 1px;
+      box-shadow: transparent 0px 3px 0px 0px;
+    }
+
+    &-btn {
+      display: flex;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-inline-start: min(3vw, 40px);
+      padding-inline-end: min(3vw, 40px);
+      appearance: none;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      position: relative;
+      white-space: nowrap;
+      vertical-align: middle;
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      line-height: 24px;
+      border-radius: 12px;
+      transition: all 0.3s;
+      font-weight: 600;
+      height: max-content;
+      min-width: 36px;
+      font-size: 16px;
+      background: transparent;
+      min-height: 36px;
+      color: #fff;
+      border: none;
+
+      & svg {
+        color: hsl(0deg 0% 100%);
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  flex: 0;
+  align-items: center;
+
+  &-btn {
+    margin-right: 0.5rem;
+    outline: 0;
+    border: none;
+    background: transparent;
+    color: hsl(0deg 0% 100%);
+
+    & svg {
+      width: 28px;
+      height: 28px;
+      color: currentColor;
+    }
+  }
+
+  &-avatar {
+    margin-right: 0.25rem;
+    cursor: pointer;
+
+    & img {
+      height: 36px;
+      width: 36px;
+      min-height: 36px;
+      min-width: 36px;
+      border-radius: 100%;
+      padding: 6px;
+    }
+  }
 }

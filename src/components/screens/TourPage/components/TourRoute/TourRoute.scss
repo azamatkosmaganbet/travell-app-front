@@ -1,0 +1,179 @@
+.tour-title {
+  padding-left: 0px;
+  padding-right: 0px;
+  box-sizing: border-box;
+  min-width: 0px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px auto 20px;
+  max-width: 1060px;
+
+  & h2 {
+    font-size: 48px;
+    line-height: 64px;
+    letter-spacing: normal;
+    text-transform: none;
+    font-weight: 900;
+    text-align: center;
+  }
+}
+
+.tour-route {
+  background: #f6f6f6;
+}
+
+.tour-content {
+  box-sizing: border-box;
+  margin: 0px auto 12px;
+  min-width: 0px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1060px;
+
+  &-route {
+    opacity: 1;
+    height: auto;
+    overflow: hidden;
+
+    &-wrapper {
+      width: 100%;
+      margin-top: 8px;
+      max-width: 1060px;
+
+      &-text {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-left: 13px;
+        padding-left: 28px;
+        padding-bottom: 80px;
+        position: relative;
+        border-left: 2px solid #009999;
+
+        &-image {
+          box-sizing: border-box;
+          margin: 0px;
+          min-width: 0px;
+          display: flex;
+          width: 100%;
+
+          &-inner {
+            height: 340px;
+            cursor: pointer;
+            border-radius: 16px;
+            overflow: hidden;
+            max-width: 1060px;
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            display: flex;
+
+            &-block {
+              height: 340px;
+              display: flex;
+              width: 100%;
+              position: relative;
+              overflow: hidden;
+
+              & img {
+                display: flex;
+                height: 100%;
+                max-width: 100%;
+                width: 100%;
+                min-width: 100%;
+                min-height: 100px;
+                max-height: calc(var(9.53px, 1vh) * 64);
+                object-fit: cover;
+                object-position: center;
+              }
+            }
+          }
+        }
+
+        &-desc {
+          margin-right: 80px;
+          display: flex;
+          width: 100%;
+          min-width: 400px;
+          max-width: 400px;
+          flex-direction: column;
+          white-space: pre-line;
+
+          & h4 {
+            font-size: 16px;
+            line-height: 21px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+          }
+
+          & p {
+            font-size: 14px;
+            margin-top: 8px !important;
+            margin-bottom: 40px !important;
+            font-style: normal;
+            white-space: pre-wrap;
+            line-height: 170%;
+            white-space: pre-line;
+          }
+        }
+
+        & span {
+          width: 28px;
+          height: 28px;
+          left: -15px;
+          font-size: 16px;
+          line-height: 28px;
+          position: absolute;
+          top: 0px;
+          border-radius: 20px;
+          font-weight: 600;
+          color: #fff;
+          text-align: center;
+          font-style: normal;
+          white-space: pre-wrap;
+          background: linear-gradient(to right, #009999, #00cccc);
+        }
+      }
+    }
+  }
+
+  &-inner {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 1060px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    background: #fff;
+    padding-inline-start: 1.25rem;
+    padding-inline-end: 1.25rem;
+    border-radius: 16px;
+    animation-name: wRiUx;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+  }
+
+  &-day {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    & h5 {
+      font-size: 20px;
+      line-height: 27px;
+      letter-spacing: normal;
+      text-transform: none;
+      font-weight: 700;
+    }
+  }
+}

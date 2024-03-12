@@ -1,0 +1,65 @@
+.tour-hero {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 128px;
+  background-position: center center;
+  background-size: cover;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.01)
+    ),
+    url("https://res.cloudinary.com/localie/image/upload/v1613243837/c7nerfwjgsvtntl5ipgc.jpg");
+}
+
+.tour-hero-content {
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 1060px;
+  width: 100%;
+  margin-bottom: 56px;
+
+  & h1 {
+    line-height: 140%;
+    width: 50%;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 48px;
+    font-weight: 900;
+  }
+
+  &-helper {
+    font-size: 28px;
+    width: 50%;
+    margin-bottom: 48px !important;
+    color: #fff;
+    font-weight: 400;
+  }
+
+  &-reserve {
+    display: flex;
+    -webkit-align-items: stretch;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  &-desc {
+    margin-top: 12px !important;
+    color: #e2e2e2;
+  }
+}

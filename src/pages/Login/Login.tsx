@@ -34,7 +34,7 @@ const Login: FC = () => {
   };
 
   return (
-    <div className="main">
+    <div className="">
       <div className="container-xxl">
         <div className="d-flex align-items-center justify-content-center">
           <div className="w-50">

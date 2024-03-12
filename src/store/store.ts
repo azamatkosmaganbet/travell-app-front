@@ -6,10 +6,16 @@ import { AuthResponse } from "../models/response/AuthResponse";
 import { toast } from "react-toastify";
 import { API_URL } from "../constants/api";
 import UserService from "../services/UserService";
+import GuideService from "../services/GuideService";
+import { IGuide } from "../models/IGuide";
+import { ITrip } from "../models/ITrip";
+import TripService from "../services/TripService";
 
 export default class Store {
   user = {} as IUser;
-  guides = [] as IUser[];
+  guides = [] as IGuide[];
+  guide = {} as IGuide;
+  trips = [] as ITrip[];
   isAuth = false;
   isLoading = false;
 
@@ -25,7 +31,15 @@ export default class Store {
     this.user = user;
   }
 
-  setGuides(guide: IUser[]) {
+  setTrips(trips: ITrip[]) {
+    this.trips = trips;
+  }
+
+  setGuide(guide: IGuide) {
+    this.guide = guide;
+  }
+
+  setGuides(guide: IGuide[]) {
     this.guides = guide;
   }
 
@@ -131,14 +145,54 @@ export default class Store {
     }
   }
 
-  async getUsersByRole(role: string) {
+  // async getUsersByRole(role: string) {
+  //   try {
+  //     this.setLoading(true);
+  //     const response = await UserService.fetchUsersByRole(role);
+
+  //     this.setGuides(response.data);
+  //   } catch (e: any) {
+  //     toast.error("Ошибка при получении пользователей");
+  //   } finally {
+  //     this.setLoading(false);
+  //   }
+  // }
+
+  async getGuideById(id: string) {
     try {
       this.setLoading(true);
-      const response = await UserService.fetchUsersByRole(role);
+      const response = await GuideService.fetchGuideById(id);
+
+      this.setGuide(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении Гида");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async getGuides() {
+    try {
+      this.setLoading(true);
+      const response = await GuideService.fetchGuides();
 
       this.setGuides(response.data);
     } catch (e: any) {
-      toast.error("Ошибка при получении пользователей");
+      toast.error("Ошибка при получении Гида");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async getTripsByGuideId(guideId: string) {
+    try {
+      this.setLoading(true);
+      const response = await TripService.fetchTripsByGuideId(guideId)
+
+      this.setTrips(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении Трипа");
+      this.setLoading(false);
     } finally {
       this.setLoading(false);
     }

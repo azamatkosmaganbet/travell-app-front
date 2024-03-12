@@ -1,0 +1,392 @@
+.guide-profile {
+  display: flex;
+  padding-top: 108px;
+  padding-bottom: 56px;
+  flex-flow: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  max-width: 1062px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.guide-profile-avatar {
+  height: 325px;
+  min-width: 325px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 295px;
+  margin-right: 40px;
+  margin-bottom: 0px;
+  position: relative;
+
+  &-inner {
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 32px;
+
+    &__picture {
+      display: block;
+      position: relative;
+      height: 100%;
+
+      & img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-position: center top;
+      }
+    }
+  }
+}
+
+.guide-profile-info {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-inline: 20px;
+  width: 100%;
+  z-index: 1;
+  padding-inline: 0px;
+
+  &__name {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 8px;
+
+    & h4 {
+      font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji";
+      background: transparent;
+      letter-spacing: normal;
+      line-height: 1.2;
+      font-size: 24px;
+      text-align: left;
+      color: #000;
+      font-weight: 900;
+      margin-right: 16px;
+    }
+
+    & svg {
+      color: #fff;
+      fill: rgba(0, 153, 153, 0.6);
+      font-size: 24px;
+      border-radius: 100%;
+    }
+  }
+
+  &__desc {
+    width: auto;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: left;
+  }
+
+  &__date {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 16px !important;
+    font-size: 14px;
+    color: #545454;
+  }
+
+  &__followers {
+    overflow-x: auto;
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+
+    &-l {
+      box-sizing: border-box;
+      margin: 0px 40px 16px 0px;
+      min-width: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 24px;
+
+      & h5 {
+        font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        font-weight: 700;
+        background: transparent;
+        letter-spacing: normal;
+        font-size: 20px;
+        line-height: 27px;
+        color: #009999;
+      }
+
+      & p {
+        color: #545454;
+        font-size: 16px;
+      }
+    }
+
+    &-r {
+      cursor: pointer;
+      margin-bottom: 24px;
+      box-sizing: border-box;
+      margin: 0px 40px 16px 0px;
+      min-width: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      & h5 {
+        font-size: 20px;
+        line-height: 27px;
+        font-weight: 700;
+      }
+
+      & p {
+        color: #545454;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__cities {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+
+    &-btn {
+      display: flex;
+      width: auto;
+      margin-right: 0.5rem;
+      margin-bottom: 1rem;
+      padding-inline-start: 0.75rem;
+      padding-inline-end: 0.75rem;
+      padding-top: 0.25rem;
+      cursor: pointer;
+      padding-bottom: 0.25rem;
+      border-radius: 32px;
+      transition: all 0.2s ease 0s;
+      border: 1px solid #000000;
+      min-width: fit-content;
+
+      & h5 {
+        font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        font-size: 12px;
+        line-height: 17px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        display: block;
+        white-space: nowrap;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__inner {
+    max-width: 960px;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 50px;
+    padding: 32px;
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #fff;
+
+    &-data {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.guide-profile-nav {
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin-bottom: 64px;
+  display: flex;
+  width: 100%;
+
+  &-list {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    overflow: auto hidden;
+    max-width: 1062px;
+
+    &-li {
+      display: block;
+      padding: 0px 20px 6px;
+      position: relative;
+      cursor: pointer;
+
+      &-line {
+        position: absolute;
+        right: calc(10% - 10px);
+        bottom: 0px;
+        background-color: rgb(255, 102, 102);
+        height: 5px;
+        width: 90%;
+        border-radius: 32px;
+        transform: none;
+        transform-origin: 50% 50% 0px;
+      }
+
+      & span {
+        cursor: pointer;
+        white-space: nowrap;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 43px;
+      }
+    }
+  }
+}
+
+.li-secondary {
+  color: #afafaf;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.guide-price {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  background: #000;
+  padding-bottom: 25px;
+
+  &-content {
+    margin-top: 28px;
+    margin-bottom: 0px;
+    width: 100%;
+    padding: 0px 8px;
+    max-width: 1062px;
+
+    &-title {
+      font-size: 44px;
+      line-height: 60px;
+      text-align: center;
+      padding-left: 0px;
+      padding-top: 0px;
+      padding-bottom: 8px;
+      width: 100%;
+      color: #fff;
+      font-weight: 900;
+    }
+
+    &-desc {
+      font-size: 16px;
+      line-height: 27px;
+      text-align: center;
+      padding-left: 0px;
+      width: 100%;
+      color: #fff;
+      padding-bottom: 28px;
+    }
+
+    &-cards {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-evenly;
+      width: 100%;
+
+      &-item {
+        display: flex;
+      }
+    }
+  }
+}
+
+.guide-info {
+  background-image: url("https://res.cloudinary.com/localie/image/upload/f_auto,w_1920,,/v1655300963/destinations/tr-istanbul2.jpg");
+  background-size: cover;
+  border-radius: 30px 30px 0px 0px;
+  margin-top: -32px !important;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  &-content {
+    padding-inline: 40px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-card {
+      max-width: 960px;
+      padding: 40px;
+      width: 100%;
+      margin: 0px 0px 40px !important;
+      min-width: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &-btns {
+        flex-direction: row;
+        display: flex;
+      }
+
+      & h1 {
+        text-align: center;
+        font-weight: 900;
+        font-size: 44px;
+        line-height: 60px;
+        margin-bottom: 48px;
+      }
+
+      &-desc {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 0 40px;
+
+        & p {
+          text-align: center;
+          font-size: 16px;
+          width: 80%;
+          color: #545454;
+          margin-top: 0.25rem;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+  }
+}

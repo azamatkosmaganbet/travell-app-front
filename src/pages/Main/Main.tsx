@@ -4,7 +4,7 @@ import "./Main.scss";
 import Home from "../../components/screens/Home/Home";
 const Main = () => {
   return (
-    <div className="main container">
+    <div >
       <Home />
     </div>
   );

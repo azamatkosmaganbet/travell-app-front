@@ -7,6 +7,9 @@ import Verification from "./pages/Verification/Verification";
 import Toast from "./components/Toast/Toast";
 import Header from "./components/Header/Header";
 import Account from "./pages/Account/Account";
+import GuidePage from "./pages/GuidePage/GuidePage";
+import Footer from "./components/Footer/Footer";
+import TourPage from "./components/screens/TourPage/TourPage";
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
             <>
               <Header />
               <Outlet />
+              <Footer />
             </>
           }
         >
@@ -26,6 +30,8 @@ function App() {
           <Route element={<Register />} path="/register" />
           <Route element={<Login />} path="/login" />
           <Route element={<Verification />} path="/verification" />
+          <Route element={<GuidePage />} path="/guide/:id" />
+          <Route element={<TourPage />} path="/tour" />
         </Route>
       </Routes>
     </BrowserRouter>

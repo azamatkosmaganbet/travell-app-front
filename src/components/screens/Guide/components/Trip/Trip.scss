@@ -1,0 +1,126 @@
+.trips {
+  flex-flow: wrap;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  padding-inline: 0px;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1062px;
+  margin: 0 auto;
+}
+
+.trip-content {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 50px;
+  border-radius: 32px;
+
+  & img {
+    display: flex;
+    height: 300px;
+    max-width: 100%;
+    width: 340px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 32px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2;
+  }
+}
+
+.trip-title {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 24px;
+  -webkit-box-flex: 3;
+  flex-grow: 3;
+  width: 100%;
+
+  & h2 {
+    font-size: 20px;
+    line-height: 27px;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+}
+
+.trip-details {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-top: -300px;
+  margin-bottom: 260px;
+
+  & p {
+    border-radius: 24px;
+    padding-inline: 8px;
+    color: #fff;
+    background: #000;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.trip-day {
+  line-height: 21px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #000000;
+  border-radius: 24px;
+  padding: 4px 8px;
+  font-size: 18px;
+}
+
+.trip-user {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 24px;
+
+  &-top {
+    display: flex;
+    margin-bottom: 24px;
+
+    & img {
+      display: flex;
+      height: 44px;
+      max-width: 100%;
+      width: 44px;
+      object-fit: cover;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 50px;
+      margin-right: 0.5rem;
+    }
+
+    &-title {
+      display: flex;
+      flex-direction: column;
+
+      & h5 {
+        font-size: 12px;
+        line-height: 17px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.trip-user-desc {
+  font-size: 12px;
+  color: #afafaf;
+  margin-left: 0.5rem;
+}
