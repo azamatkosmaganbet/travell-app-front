@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 .header {
   width: 100vw;
   position: fixed;
@@ -10,6 +12,11 @@
   transform: unset;
   padding-bottom: 0px;
 
+  @include _744 {
+    bottom: -60px;
+    padding-bottom: 60px;
+  }
+
   &-inner {
     display: flex;
     width: 100%;
@@ -20,6 +27,16 @@
     padding-inline-start: 2.5rem;
     justify-content: space-between;
     background: transparent;
+
+    @include _744 {
+      justify-content: space-around;
+      background: #fff;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      border-top: 1px solid #afafaf;
+      padding-inline-end: 0;
+      padding-inline-start: 0;
+    }
   }
 
   &-list {
@@ -78,23 +95,23 @@
   }
 }
 
-.header.is-sticky {
-  position: fixed;
-  margin: 0;
-  top: 0;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
-  -webkit-animation-name: expand;
-  animation-name: expand;
-  background: #fff;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
+// .header.is-sticky {
+//   position: fixed;
+//   margin: 0;
+//   top: 0;
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
+//   -webkit-animation-duration: 0.5s;
+//   animation-duration: 0.5s;
+//   -webkit-animation-name: expand;
+//   animation-name: expand;
+//   background: #fff;
+//   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
 
-  & svg {
-    color: #000;
-  }
-}
+//   & svg {
+//     color: #000;
+//   }
+// }
 
 .header-list-li.active::before {
   width: 80%;
@@ -157,6 +174,11 @@
   justify-content: center;
   width: 100%;
 
+  @include _744 {
+    justify-content: space-around;
+    width: 100%;
+  }
+
   &-icon {
     width: auto;
     display: flex;
@@ -168,6 +190,27 @@
     position: relative;
     cursor: pointer;
 
+    & p {
+      display: none;
+
+      @include _744 {
+        font-weight: 400;
+        font-size: 10px;
+        padding-bottom: 0.25rem;
+        text-align: center;
+      }
+    }
+
+    @include _744 {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      -webkit-box-pack: start;
+      justify-content: flex-start;
+      align-items: center;
+      cursor: pointer;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -178,6 +221,43 @@
       border-top-left-radius: 1px;
       border-top-right-radius: 1px;
       box-shadow: transparent 0px 3px 0px 0px;
+    }
+
+    &-mb-btn {
+      display: none;
+
+      & svg {
+        width: 24px;
+        height: 24px;
+        color: #545454;
+      }
+
+      @include _744 {
+        appearance: none;
+        align-items: center;
+        user-select: none;
+        position: relative;
+        background: transparent;
+        white-space: nowrap;
+        vertical-align: middle;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        line-height: 24px;
+        font-weight: 600;
+        transition: all 0.3s;
+        height: max-content;
+        min-width: 36px;
+        font-size: 16px;
+        padding-inline-end: 24px;
+        padding-inline-start: 24px;
+        color: #000;
+        min-height: 36px;
+        padding: 0px;
+        border-radius: 32px;
+        display: flex;
+        width: auto;
+        justify-content: center;
+      }
     }
 
     &-btn {
@@ -207,8 +287,12 @@
       color: #fff;
       border: none;
 
+      @include _744 {
+        appearance: none;
+        display: none;
+      }
+
       & svg {
-        color: hsl(0deg 0% 100%);
         width: 28px;
         height: 28px;
       }
@@ -222,6 +306,10 @@
   width: 100%;
   flex: 0;
   align-items: center;
+
+  @include _744 {
+    display: none;
+  }
 
   &-btn {
     margin-right: 0.5rem;

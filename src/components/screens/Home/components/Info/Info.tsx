@@ -51,9 +51,9 @@ const Info = () => {
             </p>
           </div>
         </div>
-        <Button className="btn btn-green mx-auto border-0 btn-lg">
-          Куда отправитесь в путешествие?
-        </Button>
+        <div className="tourmate-btn">
+          <button>Куда отправитесь в путешествие?</button>
+        </div>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ export interface IUser {
   isActivated: boolean;
   _id: string;
   id: string;
+  phone: string;
   avatar: string;
   registerDate: string;
 }

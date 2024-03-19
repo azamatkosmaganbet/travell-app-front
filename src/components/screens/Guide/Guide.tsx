@@ -28,8 +28,8 @@ const Guide = () => {
 
   if (store.isLoading) {
     return (
-      <div className="text-center">
-        <Spinner className="bg-blue" />
+      <div className="text-center mt-4" style={{ height: "100vh" }}>
+        <Spinner className="text-primary" />
       </div>
     );
   }
@@ -214,6 +214,19 @@ const Guide = () => {
                     price={99}
                   />
                 </Card>
+
+                <Card
+                  className="guide-price-content-cards-item"
+                  type="price"
+                  color="rgb(255, 203, 56)"
+                >
+                  <CardItem
+                    title="Полдня"
+                    description="Чаще всего, 3-4 часа"
+                    variant="price"
+                    price={99}
+                  />
+                </Card>
               </div>
             </div>
           </div>
@@ -230,12 +243,12 @@ const Guide = () => {
                 </div>
 
                 <div className="guide-info-content-card-btns">
-                  <Button className="w-100 me-2 bg-dark border-0">
+                  <a className="guide-info-content-card-btns-link mb-btn">
                     Локали в Стамбул
-                  </Button>
-                  <Button className="w-100 bg-orange border-0">
+                  </a>
+                  <a className="guide-info-content-card-btns-link link-2">
                     Локали в Стамбул
-                  </Button>
+                  </a>
                 </div>
               </Card>
             </div>

@@ -8,4 +8,8 @@ export default class TripService {
 
     return $api.get<ITrip[]>(`/guide/trip/${id}`);
   }
+
+  static fetchTripById(id: string): Promise<AxiosResponse<ITrip>> {
+    return $api.get<ITrip>(`/trip/${id}`);
+  }
 }

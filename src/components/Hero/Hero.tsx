@@ -23,11 +23,15 @@ const Hero = () => {
             <div className="hero-search-content">
               <p>Куда отправимся сегодня?</p>
             </div>
-            <button>
+            <button className="btn-search">
               <span>
                 <CiSearch />
               </span>
               Найти локали
+            </button>
+
+            <button className="mb-btn-search">
+              <CiSearch />
             </button>
           </div>
         </div>

@@ -1,3 +1,5 @@
+@import "../../../styles/mixins";
+
 .guide-profile {
   display: flex;
   padding-top: 108px;
@@ -8,6 +10,20 @@
   max-width: 1062px;
   width: 100%;
   margin: 0 auto;
+
+  @include _744 {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    padding-top: 0px;
+    padding-bottom: 32px;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1062px;
+    width: 100%;
+  }
 }
 
 .guide-profile-avatar {
@@ -21,6 +37,24 @@
   margin-bottom: 0px;
   position: relative;
 
+  @include _744 {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    --hc-sm-height: 400;
+    --hc-sm-width: 375;
+    --hc-md-height: 588;
+    --hc-md-width: 744;
+    --hc-lg-height: 564;
+    --hc-lg-width: 1128;
+    height: calc(var(--hc-sm-height, 4) / var(--hc-sm-width, 3) * 100vw);
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0px 0px -72px;
+    min-width: 0px;
+  }
+
   &-inner {
     height: 100%;
     position: absolute;
@@ -29,6 +63,17 @@
     width: 100%;
     overflow: hidden;
     border-radius: 32px;
+
+    @include _744 {
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0px 0px 32px 32px;
+      background: #fff;
+    }
 
     &__picture {
       display: block;
@@ -54,6 +99,16 @@
   width: 100%;
   z-index: 1;
   padding-inline: 0px;
+
+  @include _744 {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-inline: 20px;
+    width: 100%;
+    z-index: 1;
+  }
 
   &__name {
     display: flex;
@@ -215,6 +270,23 @@
     align-items: flex-start;
     background-color: #fff;
 
+    @include _744 {
+      max-width: 100%;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 50px;
+      height: auto;
+      box-sizing: border-box;
+      margin: 0px;
+      min-width: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 24px;
+      background: #fff;
+    }
+
     &-data {
       display: flex;
       flex-direction: column;
@@ -234,12 +306,26 @@
   display: flex;
   width: 100%;
 
+  @include _744 {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
   &-list {
     display: flex;
     justify-content: left;
     width: 100%;
     overflow: auto hidden;
     max-width: 1062px;
+
+    @include _744 {
+      display: flex;
+      justify-content: left;
+      width: auto;
+    }
 
     &-li {
       display: block;
@@ -293,6 +379,17 @@
     padding: 0px 8px;
     max-width: 1062px;
 
+    @include _744 {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding: 0px 8px;
+      -webkit-box-align: center;
+      align-items: center;
+      flex-flow: column wrap;
+      width: 100%;
+      max-width: 1062px;
+    }
+
     &-title {
       font-size: 44px;
       line-height: 60px;
@@ -303,6 +400,17 @@
       width: 100%;
       color: #fff;
       font-weight: 900;
+
+      @include _744 {
+        text-align: left;
+        font-weight: 900;
+        width: 100%;
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-bottom: 8px;
+        font-size: 32px;
+        line-height: 43px;
+      }
     }
 
     &-desc {
@@ -313,6 +421,15 @@
       width: 100%;
       color: #fff;
       padding-bottom: 28px;
+
+      @include _744 {
+        width: 100%;
+        text-align: left;
+        padding-left: 20px;
+        padding-bottom: 8px;
+        font-size: 12px;
+        line-height: 20px;
+      }
     }
 
     &-cards {
@@ -341,6 +458,13 @@
   width: 100%;
   flex-direction: column;
 
+  @include _744 {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   &-content {
     padding-inline: 40px;
     padding-top: 64px;
@@ -348,6 +472,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include _744 {
+      display: flex;
+      flex-direction: column;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      width: 100%;
+      padding-inline: 20px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      z-index: 1;
+    }
     &-card {
       max-width: 960px;
       padding: 40px;
@@ -358,9 +496,63 @@
       flex-direction: column;
       justify-content: center;
 
+      @include _744 {
+        box-sizing: border-box;
+        margin: 0px 0px 40px;
+        min-width: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        width: auto;
+      }
+
       &-btns {
         flex-direction: row;
         display: flex;
+
+        @include _744 {
+          flex-direction: column;
+        }
+
+        &-link {
+          font-size: 18px;
+          padding-inline: 32px;
+          line-height: 32px;
+          padding-top: 12px;
+          padding-bottom: 12px;
+          margin-bottom: 0px;
+          margin-right: 40px;
+          height: max-content;
+          min-width: 3rem;
+          display: inline-flex;
+          appearance: none;
+          -webkit-box-align: center;
+          text-decoration: none;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          user-select: none;
+          position: relative;
+          white-space: nowrap;
+          vertical-align: middle;
+          outline: transparent solid 2px;
+          outline-offset: 2px;
+          border-radius: 12px;
+          transition: all 0.3s ease 0s;
+          color: #fff;
+          background: #000;
+          width: 100%;
+
+          @include _744 {
+            font-size: 16px;
+            padding-inline: 24px;
+            line-height: 24px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            min-width: 2.5rem;
+          }
+        }
       }
 
       & h1 {
@@ -369,6 +561,14 @@
         font-size: 44px;
         line-height: 60px;
         margin-bottom: 48px;
+
+        @include _744 {
+          font-size: 28px;
+          line-height: 38px;
+          font-weight: 900;
+          text-align: center;
+          margin-bottom: 20px;
+        }
       }
 
       &-desc {
@@ -385,8 +585,24 @@
           color: #545454;
           margin-top: 0.25rem;
           margin-bottom: 0.25rem;
+
+          @include _744 {
+            width: 100%;
+            font-size: 14px;
+          }
         }
       }
     }
   }
+}
+
+.mb-btn {
+  @include _744 {
+    margin-bottom: 16px !important;
+  }
+}
+
+.link-2 {
+  background: #ff5b5b;
+  color: #fff;
 }

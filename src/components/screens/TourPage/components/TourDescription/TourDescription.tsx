@@ -2,7 +2,17 @@ import { Button } from "react-bootstrap";
 import { ReactComponent as Verified } from "../../../../../assets/icons/verified.svg";
 import { Card } from "../../../../UI/Card/Card";
 import "./TourDescription.scss";
-const TourDescription = () => {
+import { ITrip } from "../../../../../models/ITrip";
+import { FC } from "react";
+import { BASE_URL } from "../../../../../constants/api";
+import { useNavigate } from "react-router-dom";
+
+interface ITour {
+  tour: ITrip;
+}
+
+const TourDescription: FC<ITour> = ({ tour }) => {
+  const navigate = useNavigate()
   return (
     <div className="description">
       <div className="description-faq">
@@ -11,18 +21,15 @@ const TourDescription = () => {
           <div className="description-faq-content-cards">
             <div className="description-faq-inner">
               <Card type="info" color="#fff">
-                <h3>Гульжамал</h3>
+                <h3>{tour.guide?.name}</h3>
                 <div className="description-faq-user">
-                  <img
-                    alt=""
-                    src="https://res.cloudinary.com/localie/image/upload/f_auto,w_200,,/v1649111467/vzknwfjsmpiv02i7fhj3.jpg"
-                  />
+                  <img alt="" src={`${BASE_URL}/${tour.guide?.avatar}`} />
                   <div className="description-faq-user-desc">
-                    <b>Гульжамал</b>
+                    <b>{tour.guide?.name}</b>
                     <span>Люблю и вдохновляюсь Стамбулом</span>
                   </div>
                   <div className="description-faq-user-verified">
-                    <Verified />
+                    {tour.guide?.isActivated && <Verified />}
                   </div>
                 </div>
 
@@ -30,7 +37,7 @@ const TourDescription = () => {
                   <Button className="btn btn-md btn-dark me-4 w-100">
                     Написать локали
                   </Button>
-                  <Button className="btn btn-md btn-light w-100 btn-outline-success">
+                  <Button onClick={() => {navigate(`/guide/${tour.guide._id}`)}} className="btn btn-md btn-light w-100 btn-outline-success">
                     Больше о локали
                   </Button>
                 </div>
@@ -62,14 +69,7 @@ const TourDescription = () => {
           <h2>Описание</h2>
           <div className="description-content-wrapper-text">
             <p>
-              Поездка в Стамбул будет неполноценной без посещения азиатской
-              стороны города, поэтому обязательно выделите себе денёчек,
-              садитесь на паром и приезжайте ко мне на Кадыкёй! Прогрессивный,
-              волнительный и будоражащий, он не оставит вас равнодушным, будь то
-              богемная Модá, элегантная архитектура Суадие или эклектичная
-              набережная Джаддебостан. Кадыкёй признан одним из самых удобных
-              районов для проживания, познакомьтесь с неспешной жизнью
-              современного Стамбула во время прогулки со мной.
+              {tour.description}
             </p>
           </div>
         </div>

@@ -1,3 +1,5 @@
+@import "../../../styles/mixins";
+
 .main-card {
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 50px;
@@ -10,9 +12,18 @@
   flex-direction: column;
   margin-bottom: 32px;
 
+  @include _744 {
+    margin-bottom: 24px;
+  }
+
   & p {
     font-size: 16px;
     line-height: 27px;
+
+    @include _744 {
+      font-size: 14px;
+      line-height: 24px;
+    }
   }
 
   & h5 {
@@ -24,6 +35,10 @@
     font-size: 20px;
     line-height: 27px;
     width: 100%;
+
+    @include _744 {
+      margin-bottom: 16px;
+    }
   }
 }
 
@@ -41,6 +56,19 @@
   border-radius: 16px;
   width: 250px;
   height: 300px;
+
+  @include _744 {
+    display: flex;
+    width: 167px;
+    height: 200px;
+    margin-top: 5px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-inline: 20px;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+  }
 }
 
 .card-item-price-title {
@@ -51,11 +79,21 @@
     font-size: 32px;
     line-height: 43px;
     font-weight: 700;
+
+    @include _744 {
+      font-size: 20px;
+      line-height: 27px;
+    }
   }
 
   & p {
     font-size: 16px;
     line-height: 27px;
+
+    @include _744 {
+      font-size: 12px;
+      line-height: 20px;
+    }
   }
 }
 
@@ -65,6 +103,12 @@
   line-height: 64px;
   font-weight: 900;
   color: #000;
+
+  @include _744 {
+    font-size: 32px;
+    line-height: 43px;
+    font-weight: 700;
+  }
 }
 
 .trip-card {
@@ -76,9 +120,18 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+
+  @include _744 {
+    box-sizing: border-box;
+    margin: 0px 7px 40px;
+    min-width: 0px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    order: 0;
+    width: 100%;
+  }
 }
-
-
 
 .description-faq-card {
   order: 3;
@@ -98,4 +151,3 @@
     font-size: 28px;
   }
 }
-

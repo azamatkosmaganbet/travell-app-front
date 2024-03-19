@@ -19,7 +19,7 @@ const TourmateList: FC<TourmateListProps> = ({ data, title, type }) => {
   const navigationPrevRef = useRef(null);
   return (
     <div className="tourmate">
-      <h2>{title}</h2>
+      <h2 className="tourmate-title">{title}</h2>
 
       <div className="tourmate-cards">
         <div className="left-btn" ref={navigationPrevRef}>
@@ -34,8 +34,13 @@ const TourmateList: FC<TourmateListProps> = ({ data, title, type }) => {
             prevEl: navigationPrevRef.current,
             nextEl: navigationNextRef.current,
           }}
+          breakpoints={{
+            744: {
+              navigation: false,
+            },
+          }}
         >
-          {data.length > 0 &&
+          {data?.length > 0 &&
             data?.map((el) => (
               <SwiperSlide className="swiper-card">
                 <TourmateCard type={type} tourmate={el} />
@@ -46,9 +51,9 @@ const TourmateList: FC<TourmateListProps> = ({ data, title, type }) => {
           <FaChevronRight />
         </div>
       </div>
-      <Button className="btn btn-lg mx-auto tourmate-btn btn-green border-0">
-        Куда отправитесь в путешествие?
-      </Button>
+      <div className="tourmate-btn">
+        <button>Куда отправитесь в путешествие?</button>
+      </div>
     </div>
   );
 };

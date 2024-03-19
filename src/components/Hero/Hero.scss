@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 // .hero {
 //   position: relative;
 //   height: max-content;
@@ -125,12 +127,22 @@
     font-weight: 900;
     line-height: 1.2;
     margin-bottom: 2rem;
+
+    @include _744 {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
   }
 
   &-desc {
     color: #fff;
     margin-bottom: 2.5rem !important;
     font-size: 20px;
+
+    @include _744 {
+      font-size: 16px;
+      margin-bottom: 1.25rem;
+    }
   }
 }
 
@@ -143,12 +155,20 @@
   margin-bottom: 64px;
   width: 100%;
 
+  @include _744 {
+    margin-bottom: 24px;
+  }
+
   &-content {
     display: flex;
     height: 100%;
     max-width: 340px;
     position: relative;
     width: 100%;
+
+    @include _744 {
+      max-width: 100%;
+    }
 
     & p {
       border-radius: 32px 0px 0px 32px;
@@ -163,6 +183,11 @@
       cursor: pointer;
       -webkit-box-align: center;
       align-items: center;
+
+      @include _744 {
+        border-radius: 32px;
+        font-size: 16px;
+      }
     }
   }
 
@@ -202,5 +227,45 @@
         font-size: 24px;
       }
     }
+  }
+}
+
+.mb-btn-search {
+  appearance: none;
+  display: none !important;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  line-height: 24px;
+  transition: all 0.3s ease 0s;
+  height: max-content;
+  font-weight: 600;
+  min-width: 2.5rem;
+  font-size: 16px;
+  padding-inline: 24px;
+  background: #009999;
+  color: #fff;
+  padding: 12px !important;
+  margin-left: -48px !important;
+
+  & svg {
+    font-size: 24px;
+  }
+
+  @include _744 {
+    display: flex !important;
+  }
+}
+
+.btn-search {
+  @include _744 {
+    display: none !important;
   }
 }

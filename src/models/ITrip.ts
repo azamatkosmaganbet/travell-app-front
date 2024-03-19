@@ -1,3 +1,4 @@
+import { IRoute } from "./IRoute";
 import { IUser } from "./IUser";
 
 export interface ITrip {
@@ -8,4 +9,5 @@ export interface ITrip {
   image: string;
   day: number;
   guide: IUser;
+  routes: IRoute[];
 }

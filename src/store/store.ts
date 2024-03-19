@@ -10,12 +10,15 @@ import GuideService from "../services/GuideService";
 import { IGuide } from "../models/IGuide";
 import { ITrip } from "../models/ITrip";
 import TripService from "../services/TripService";
+import { IBooking } from "../models/IBooking";
+import BookingService from "../services/BookingService";
 
 export default class Store {
   user = {} as IUser;
   guides = [] as IGuide[];
   guide = {} as IGuide;
   trips = [] as ITrip[];
+  trip = {} as ITrip;
   isAuth = false;
   isLoading = false;
 
@@ -33,6 +36,10 @@ export default class Store {
 
   setTrips(trips: ITrip[]) {
     this.trips = trips;
+  }
+
+  setTrip(trip: ITrip) {
+    this.trip = trip;
   }
 
   setGuide(guide: IGuide) {
@@ -187,12 +194,38 @@ export default class Store {
   async getTripsByGuideId(guideId: string) {
     try {
       this.setLoading(true);
-      const response = await TripService.fetchTripsByGuideId(guideId)
+      const response = await TripService.fetchTripsByGuideId(guideId);
 
       this.setTrips(response.data);
     } catch (e: any) {
       toast.error("Ошибка при получении Трипа");
       this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async getTripById(id: string) {
+    try {
+      this.setLoading(true);
+      const response = await TripService.fetchTripById(id);
+
+      this.setTrip(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении Трипа");
+      this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async createBooking(data: IBooking) {
+    try {
+      this.setLoading(true);
+      const response = await BookingService.createBooking(data);
+
+      toast.success("Вы успешо забронировали тур")
+    } catch (e: any) {
     } finally {
       this.setLoading(false);
     }

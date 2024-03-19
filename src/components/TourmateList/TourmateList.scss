@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 .tourmate {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
@@ -5,6 +7,11 @@
   flex-direction: column;
   align-items: center;
   order: 1;
+
+  @include _744 {
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
 }
 
 .tourmate-title {
@@ -16,6 +23,12 @@
   text-align: center;
   width: 100%;
   margin-bottom: 2rem;
+
+  @include _744 {
+    font-size: 24px;
+    padding-inline-start: 1.25rem;
+    padding-inline-end: 1.25rem;
+  }
 }
 
 .tourmate-cards {
@@ -24,6 +37,13 @@
   position: relative;
   width: 100%;
   filter: drop-shadow(rgba(0, 0, 0, 0.06) 0px 2px 50px);
+
+  @include _744 {
+    position: relative;
+    max-width: calc(-16px + 100vw);
+    width: 100%;
+    filter: drop-shadow(rgba(0, 0, 0, 0.06) 0px 2px 50px);
+  }
 }
 
 .swiper-card {
@@ -43,6 +63,10 @@
   justify-content: center;
   min-width: 0px;
 
+  @include _744 {
+    display: none;
+  }
+
   & svg {
     color: rgb(189, 189, 189);
     width: 48px;
@@ -59,9 +83,60 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @include _744 {
+    display: none;
+  }
+
   & svg {
     color: rgb(189, 189, 189);
     width: 48px;
     height: 48px;
+  }
+}
+
+.tourmate-btn {
+  width: auto;
+  margin-top: 2rem;
+  padding-inline: 0px;
+
+  @include _744 {
+    width: 100%;
+    padding-inline-end: 1.25rem;
+    padding-inline-start: 1.25rem;
+  }
+
+  & button {
+    display: inline-flex;
+    appearance: none;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    user-select: none;
+    position: relative;
+    white-space: nowrap;
+    padding: 12px 24px;
+    vertical-align: middle;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    line-height: 1.2;
+    border-radius: 12px;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+    background: #009999;
+    color: #fff;
+    border: 0;
+    font-weight: 600;
+
+    @include _744 {
+      font-size: 14px;
+      padding-inline: 23px;
+      line-height: 23px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      height: max-content;
+      min-width: 2rem;
+    }
   }
 }

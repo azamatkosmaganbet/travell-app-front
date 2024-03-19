@@ -125,3 +125,48 @@
     color: #fff;
   }
 }
+
+.modal-user {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 32px;
+  border: 1px solid #eeeeee;
+  background: #fff;
+
+  &-avatar {
+    border-radius: 100%;
+    width: 28px;
+    height: 28px;
+    margin-right: 16px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    background-size: 100% 100%;
+  }
+
+  & p {
+    font-style: normal;
+    white-space: pre-wrap;
+    line-height: 170%;
+    font-size: 16px;
+  }
+}
+
+.modal-title {
+  & p {
+    font-style: normal;
+    white-space: pre-wrap;
+    line-height: 170%;
+    font-size: 16px;
+  }
+
+  & h1 {
+    font-size: 32px;
+    line-height: 43px;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+}

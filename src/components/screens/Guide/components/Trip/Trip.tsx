@@ -5,17 +5,19 @@ import { Button } from "react-bootstrap";
 import { Card } from "../../../../UI/Card/Card";
 import { BASE_URL } from "../../../../../constants/api";
 import { ITrip } from "../../../../../models/ITrip";
+import { useNavigate } from "react-router-dom";
 
 interface TripProps {
   trips: ITrip[];
 }
 
 const Trip: FC<TripProps> = ({ trips }) => {
+  const navigate = useNavigate()
   return (
     <div className="trips">
       {trips.map((trip) => (
         <Card type="trip">
-          <div className="trip-content">
+          <div className="trip-content" onClick={() => {navigate(`/tour/${trip._id}`)}}>
             <img
               className=""
               alt="Trip"
