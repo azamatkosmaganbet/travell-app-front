@@ -1,3 +1,5 @@
+@import "../../../../../styles/mixins";
+
 .description-faq-content {
   align-items: center;
   width: 100%;
@@ -21,12 +23,29 @@
   width: 100%;
   max-width: 1060px;
   flex-direction: column;
+
+  @include _744 {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 16px;
+    padding-bottom: 0px;
+    padding-inline-start: 1.25rem;
+    padding-inline-end: 1.25rem;
+  }
 }
 
 .description-faq-inner {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+
+  @include _744 {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+  }
 }
 
 .description-faq-user {
@@ -55,11 +74,19 @@
     & b {
       font-size: 20px;
       font-weight: 700;
+
+      @include _744 {
+        font-size: 16px;
+      }
     }
 
     & span {
       font-size: 16px;
       color: #afafaf;
+
+      @include _744 {
+        font-size: 14px;
+      }
     }
   }
 
@@ -78,6 +105,94 @@
 
 .description-faq-actions {
   display: flex;
+
+  & button {
+    font-size: 16px;
+    padding-inline: 24px;
+    border: 0;
+    line-height: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-right: 20px;
+    height: max-content;
+    min-width: 2.5rem;
+    display: inline-flex;
+    appearance: none;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    user-select: none;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    border-radius: 12px;
+    transition: all 0.3s ease 0s;
+    width: 50%;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    background: #000;
+
+    @include _744 {
+      font-size: 14px;
+      padding-inline: 23px;
+      line-height: 23px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      min-width: 2rem;
+      height: max-content;
+    }
+  }
+
+  & a {
+    font-size: 16px;
+    padding-inline: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    height: max-content;
+    min-width: 2.5rem;
+    display: inline-flex;
+    appearance: none;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    user-select: none;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease 0s;
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    width: auto;
+    color: #000;
+    border-color: #000;
+
+    &:hover {
+      border-color: #009999;
+      background: #fff;
+    }
+
+    @include _744 {
+      font-size: 14px;
+      padding-inline: 23px;
+      line-height: 23px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      min-width: 2rem;
+      height: max-content;
+    }
+  }
 }
 
 .description-content {
@@ -97,11 +212,25 @@
     padding-inline-start: 20px;
     padding-inline-end: 20px;
 
+    @include _744 {
+      padding-top: 32px;
+      padding-bottom: 32px;
+      padding-inline: 20px;
+    }
+
     & h2 {
       font-weight: 900;
       margin-right: 16px;
       font-size: 48px;
       margin-bottom: 20px;
+
+      @include _744 {
+        font-size: 28px;
+        text-align: left;
+        margin-bottom: 20px;
+        padding-inline: 0px;
+        margin-right: 0px;
+      }
     }
 
     &-text {
@@ -114,7 +243,38 @@
         margin-bottom: 16px;
         white-space: pre-wrap;
         font-size: 18px;
+
+        @include _744 {
+          font-size: 16px;
+          white-space: unset;
+        }
       }
+    }
+  }
+}
+
+.additional-info-card {
+  @include _744 {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    padding-inline: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    order: 0;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  & h3 {
+    @include _744 {
+      font-size: 24px;
+    }
+  }
+
+  & p {
+    @include _744 {
+      font-size: 14px;
     }
   }
 }

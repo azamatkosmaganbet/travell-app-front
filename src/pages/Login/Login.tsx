@@ -34,69 +34,60 @@ const Login: FC = () => {
   };
 
   return (
-    <div className="">
-      <div className="container-xxl">
-        <div className="d-flex align-items-center justify-content-center">
-          <div className="w-50">
-            <img src={LoginPhoto} alt="" />
+    <div className="login">
+      <div className="login-inner">
+        <div className="login-content">
+          <div className="login-top">
+            <p>Вход или регистрация</p>
           </div>
-
-          <div className="w-50">
-            <h1 className="title">Hi, welcome to GO Trip!</h1>
+          <div className="login-bottom">
+            <p>Добро пожаловать в Локали</p>
             <form className="login-form" onSubmit={submitHandler}>
-              <div className="login-form-block">
-                <Form.Group
-                  className="mb-3"
-                  controlId="exampleForm.ControlInput1"
-                >
-                  <Form.Label>Email: </Form.Label>
-                  <Form.Control
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    type="email"
-                    value={email}
-                    placeholder="name@example.com"
-                  />
-                </Form.Group>
-                <Form.Group
-                  className="mb-3"
-                  controlId="exampleForm.ControlInput1"
-                >
-                  <Form.Label>Password: </Form.Label>
-                  <Form.Control
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                    }}
-                    type="password"
-                    value={password}
-                    placeholder="Password"
-                  />
-                </Form.Group>
-                <p className="text-end text-warning ">Forgot Password ?</p>
-                <Button type="submit">Login</Button>
-              </div>
-
-              <div className="login-line">
-                <span>or</span>
-              </div>
-              <div className="d-flex flex-column">
-                <Button className="my-2 btn-secondary">
-                  <i className="bi bi-google"></i>
-                  <span className="mx-2">Continue with Google</span>
-                </Button>
-                <Button className="my-2 btn-secondary">
-                  <i className="bi bi-facebook"></i>
-                  <span className="mx-2">Continue with Facebook</span>
-                </Button>
-              </div>
+              <Form.Group
+                className="mb-3 mt-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  className="border-0"
+                  size="lg"
+                  type="email"
+                  value={email}
+                  placeholder="Email"
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  className="border-0"
+                  size="lg"
+                  type="password"
+                  value={password}
+                  placeholder="Password"
+                />
+              </Form.Group>
+              <Button type="submit" className="btn btn-lg bg-orange border-0 ">
+                Войти
+              </Button>
             </form>
-
-            <div className="text-center my-2">
-              <p>
-                Don’t have account?{" "}
-                <span className="text-warning">Sign Up</span>
-              </p>
+            <div className="divider">
+              <span>или</span>
+            </div>
+            <div className="variants">
+              <button
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
+                <p>Зарегистрироваться</p>
+              </button>
             </div>
           </div>
         </div>
@@ -139,3 +130,70 @@ export default observer(Login);
         Register
       </button> */
 }
+
+// <div className="container-xxl">
+//   <div className="login">
+//     <div className="login-avatar">
+//       <img src={LoginPhoto} alt="" />
+//     </div>
+
+//     <div className="login-main">
+//       <h1 className="title">Hi, welcome to GO Trip!</h1>
+//       <form className="login-form" onSubmit={submitHandler}>
+//         <div className="login-form-block">
+//           <Form.Group
+//             className="mb-3"
+//             controlId="exampleForm.ControlInput1"
+//           >
+//             <Form.Label>Email: </Form.Label>
+//             <Form.Control
+//               onChange={(e) => {
+//                 setEmail(e.target.value);
+//               }}
+//               type="email"
+//               value={email}
+//               placeholder="name@example.com"
+//             />
+//           </Form.Group>
+//           <Form.Group
+//             className="mb-3"
+//             controlId="exampleForm.ControlInput1"
+//           >
+//             <Form.Label>Password: </Form.Label>
+//             <Form.Control
+//               onChange={(e) => {
+//                 setPassword(e.target.value);
+//               }}
+//               type="password"
+//               value={password}
+//               placeholder="Password"
+//             />
+//           </Form.Group>
+//           <p className="text-end text-warning ">Forgot Password ?</p>
+//           <Button type="submit">Login</Button>
+//         </div>
+
+//         <div className="login-line">
+//           <span>or</span>
+//         </div>
+//         <div className="d-flex flex-column">
+//           <Button className="my-2 btn-secondary">
+//             <i className="bi bi-google"></i>
+//             <span className="mx-2">Continue with Google</span>
+//           </Button>
+//           <Button className="my-2 btn-secondary">
+//             <i className="bi bi-facebook"></i>
+//             <span className="mx-2">Continue with Facebook</span>
+//           </Button>
+//         </div>
+//       </form>
+
+//       <div className="text-center my-2">
+//         <p>
+//           Don’t have account?{" "}
+//           <span className="text-warning">Sign Up</span>
+//         </p>
+//       </div>
+//     </div>
+//   </div>
+// </div>;

@@ -1,3 +1,5 @@
+@import "../../../../../styles/mixins";
+
 .tour-title {
   padding-left: 0px;
   padding-right: 0px;
@@ -10,6 +12,19 @@
   margin: 40px auto 20px;
   max-width: 1060px;
 
+  @include _744 {
+    box-sizing: border-box;
+    min-width: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 40px auto 20px;
+    max-width: 1060px;
+  }
+
   & h2 {
     font-size: 48px;
     line-height: 64px;
@@ -17,6 +32,11 @@
     text-transform: none;
     font-weight: 900;
     text-align: center;
+
+    @include _744 {
+      font-size: 28px;
+      line-height: 38px;
+    }
   }
 }
 
@@ -50,6 +70,13 @@
         padding-bottom: 80px;
         position: relative;
         border-left: 2px solid #009999;
+
+        @include _744 {
+          margin-left: 12px;
+          padding-left: 20px;
+          padding-bottom: 40px;
+          flex-wrap: wrap;
+        }
 
         &-image {
           box-sizing: border-box;
@@ -100,6 +127,13 @@
           flex-direction: column;
           white-space: pre-line;
 
+          @include _744 {
+            width: 100%;
+            min-width: auto;
+            max-width: auto;
+            margin-right: 0;
+          }
+
           & h4 {
             font-size: 16px;
             line-height: 21px;
@@ -134,6 +168,19 @@
           font-style: normal;
           white-space: pre-wrap;
           background: linear-gradient(to right, #009999, #00cccc);
+
+          @include _744 {
+            position: absolute;
+            top: 0px;
+            left: -13px;
+            width: 24px;
+            height: 24px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 24px;
+            text-align: center;
+          }
         }
       }
     }
@@ -154,6 +201,10 @@
     animation-duration: 0.3s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
+
+    @include _744 {
+      margin-bottom: 1rem;
+    }
   }
 
   &-day {

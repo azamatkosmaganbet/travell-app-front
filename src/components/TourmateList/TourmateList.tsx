@@ -28,11 +28,10 @@ const TourmateList: FC<TourmateListProps> = ({ data, title, type }) => {
         <Swiper
           // spaceBetween={20}
           slidesPerView={5}
-          onSlideChange={() => console.log("slide change")}
           modules={[Navigation]}
           navigation={{
-            prevEl: navigationPrevRef.current,
-            nextEl: navigationNextRef.current,
+            prevEl: ".left-btn",
+            nextEl: ".right-btn",
           }}
           breakpoints={{
             744: {
@@ -40,12 +39,11 @@ const TourmateList: FC<TourmateListProps> = ({ data, title, type }) => {
             },
           }}
         >
-          {data?.length > 0 &&
-            data?.map((el) => (
-              <SwiperSlide className="swiper-card">
-                <TourmateCard type={type} tourmate={el} />
-              </SwiperSlide>
-            ))}
+          {data?.map((el) => (
+            <SwiperSlide className="swiper-card">
+              <TourmateCard key={el.id} type={type} tourmate={el} />
+            </SwiperSlide>
+          ))}
         </Swiper>
         <div className="right-btn" ref={navigationNextRef}>
           <FaChevronRight />

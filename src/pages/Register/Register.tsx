@@ -112,7 +112,7 @@ const Register = () => {
               />
             </Form.Group>
 
-            <Button type="submit" className="w-100">
+            <Button type="submit" className="w-100 bg-orange border-0">
               Sign Up
             </Button>
           </form>

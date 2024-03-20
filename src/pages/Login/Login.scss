@@ -1,53 +1,224 @@
+@import "../../styles/mixins";
+
 .login {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding-top: 64px;
+  min-height: calc(1vh * 100);
+  width: 100%;
+  position: relative;
+  transition: filter 0.2s ease-in 0s;
+  background-color: #f6f6f6;
+
+  @include _744 {
+    padding-top: 48px;
+  }
 }
 
-.login-left {
-  width: 50%;
-}
-
-.title {
-  color: rgba(55, 94, 151, 1);
-}
-
-.login-right {
-  width: 50%;
-}
-
-.login-form-block {
+.login-inner {
+  padding: 64px 40px;
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+
+  @include _744 {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    padding: 0px;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
 }
 
-.login-line {
+.login-content {
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
   display: flex;
+  max-width: 568px;
+  min-height: 420px;
+  width: 100%;
+  border-radius: 16px;
+  flex-direction: column;
+  border-style: solid;
+  border-image: initial;
+  overflow: hidden;
+  border-color: #545454;
+
+  @include _744 {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    max-width: 568px;
+    min-height: 420px;
+    width: 100%;
+    border-radius: 16px;
+    flex-direction: column;
+    border-style: solid;
+    border-image: initial;
+    border-width: 0px;
+    border-color: #545454;
+    overflow: hidden;
+    box-shadow: none;
+  }
+}
+
+.login-top {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0px auto;
+  min-width: 0px;
+  justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
+  width: 100%;
+  height: 52px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #545454;
 
-  &::before {
-    margin-left: 0px;
+  & p {
+    line-height: 170%;
+    font-weight: 700;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.login-bottom {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+
+  @include _744 {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
   }
 
-  &::after {
-    margin-right: 0px;
-  }
+  & p {
+    font-size: 24px;
+    white-space: pre-wrap;
+    line-height: 170%;
+    font-weight: 600;
+    margin-bottom: 20px;
 
-  &::after,
-  &::before {
-    content: "";
-    flex: 1 1 10%;
-    border-bottom: 1px solid rgb(193, 199, 198);
-    margin: 0px 10px;
-    transform: translateY(-50%);
+    @include _744 {
+      font-size: 20px;
+    }
   }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.divider {
+  margin: 32px 0px;
+  position: relative;
+  border-bottom: 1px solid #afafaf;
 
   & span {
-    font-size: 13px;
-    line-height: 16px;
-    font-weight: normal;
-    color: rgb(92, 108, 117);
-    text-align: center;
+    color: #afafaf;
+    position: absolute;
+    margin: auto;
+    right: 50%;
+    transform: translateX(50%);
+    top: -10px;
+    padding: 0px 12px;
+    white-space: nowrap;
+    background: #f6f6f6;
+    line-height: 100%;
+  }
+}
+
+.variants {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  display: flex;
+  flex-direction: column;
+
+  & button {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding: 11.5px;
+    border: none;
+    cursor: pointer;
+    height: max-content;
+    transition: all 0.3s ease 0s;
+    outline: none;
+    display: flex;
+    align-items: center;
+    color: #000;
+    background: #fff;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    @include _744 {
+      padding: 12px 16px;
+    }
+
+    &:hover {
+      background: #eeeeee;
+    }
+
+    & p {
+      font-size: 16px;
+      margin-left: 12px;
+      margin-right: 12px;
+      display: inline-block;
+      white-space: nowrap;
+      width: 100%;
+      color: inherit;
+      line-height: 170%;
+      font-weight: 600;
+      text-transform: none;
+      text-align: center;
+
+      @include _744 {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: none;
+        text-align: center;
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.btn-lg {
+  @include _744 {
+    padding: 16px 12px !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+  }
+
+  &:hover {
+    background-color: rgb(255, 144, 144) !important;
   }
 }

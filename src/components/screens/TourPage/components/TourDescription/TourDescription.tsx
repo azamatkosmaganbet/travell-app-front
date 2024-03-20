@@ -12,7 +12,7 @@ interface ITour {
 }
 
 const TourDescription: FC<ITour> = ({ tour }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="description">
       <div className="description-faq">
@@ -21,7 +21,7 @@ const TourDescription: FC<ITour> = ({ tour }) => {
           <div className="description-faq-content-cards">
             <div className="description-faq-inner">
               <Card type="info" color="#fff">
-                <h3>{tour.guide?.name}</h3>
+                <h3>Путешествие организует</h3>
                 <div className="description-faq-user">
                   <img alt="" src={`${BASE_URL}/${tour.guide?.avatar}`} />
                   <div className="description-faq-user-desc">
@@ -34,16 +34,22 @@ const TourDescription: FC<ITour> = ({ tour }) => {
                 </div>
 
                 <div className="description-faq-actions">
-                  <Button className="btn btn-md btn-dark me-4 w-100">
-                    Написать локали
-                  </Button>
-                  <Button onClick={() => {navigate(`/guide/${tour.guide._id}`)}} className="btn btn-md btn-light w-100 btn-outline-success">
+                  <button className="">Написать локали</button>
+                  <a
+                    onClick={() => {
+                      navigate(`/guide/${tour.guide._id}`);
+                    }}
+                  >
                     Больше о локали
-                  </Button>
+                  </a>
                 </div>
               </Card>
 
-              <Card type="info" color="#FFD500">
+              <Card
+                className="additional-info-card"
+                type="info"
+                color="#FFD500"
+              >
                 <h3>Кто такие локали?</h3>
                 <div className="description-faq-user">
                   <p>
@@ -54,9 +60,12 @@ const TourDescription: FC<ITour> = ({ tour }) => {
                 </div>
 
                 <div className="description-faq-actions">
-                  <Button className="btn btn-md btn-dark me-4 w-100">
+                  <button
+                    className="description-faq-actions-secondary"
+                    style={{ width: "100%", marginRight: "0px" }}
+                  >
                     О проекте
-                  </Button>
+                  </button>
                 </div>
               </Card>
             </div>
@@ -68,9 +77,7 @@ const TourDescription: FC<ITour> = ({ tour }) => {
         <div className="description-content-wrapper">
           <h2>Описание</h2>
           <div className="description-content-wrapper-text">
-            <p>
-              {tour.description}
-            </p>
+            <p>{tour.description}</p>
           </div>
         </div>
       </div>

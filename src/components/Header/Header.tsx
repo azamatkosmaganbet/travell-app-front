@@ -161,7 +161,7 @@ const Header = () => {
 
           <div className="header-right">
             <button className="header-right-btn">
-              <Search />
+              <Search color="#000" fill="#000" />
             </button>
 
             {store.user && (

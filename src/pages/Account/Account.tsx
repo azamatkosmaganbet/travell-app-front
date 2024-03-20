@@ -41,13 +41,13 @@ const Account = () => {
     }
   };
 
-  if (store.isLoading) {
-    return (
-      <div className="text-center">
-        <Spinner />
-      </div>
-    );
-  }
+  // if (store.isLoading) {
+  //   return (
+  //     <div className="text-center">
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
 
   // if (!store.isAuth) {
   //   return (
