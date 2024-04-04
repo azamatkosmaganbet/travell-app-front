@@ -1,0 +1,150 @@
+.quiz {
+  padding-top: 0px;
+  min-height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  position: relative;
+  transition: filter 0.2s ease-in 0s;
+}
+
+.quiz-content {
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  padding-top: 2.5rem;
+  height: 100vh;
+  overflow-y: scroll;
+  background-size: cover;
+  background-image: url("https://celes.club/uploads/posts/2022-06/1654427601_11-celes-club-p-oboi-na-rabochii-stol-puteshestviya-krasiv-18.jpg");
+  background-position: center center;
+}
+
+.quiz-modal {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 0px;
+  word-wrap: break-word;
+  --card-bg: var(--chakra-colors-chakra-body-bg);
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-radius);
+  border-width: var(--card-border-width, 0);
+  border-color: var(--card-border-color);
+  --card-radius: var(--chakra-radii-md);
+  --card-padding: var(--chakra-space-5);
+  --card-shadow: var(--chakra-shadows-base);
+  margin: auto;
+  max-width: 1060px;
+  margin-top: 1.25rem;
+  height: auto;
+  background: #fff;
+  color: #000;
+}
+
+.quiz-modal-inner {
+  flex: 1 1 0%;
+  overflow-x: hidden;
+  padding: 1.25rem;
+}
+
+.quiz-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress {
+  overflow: hidden;
+  position: relative;
+  background: #eee;
+  height: 0.75rem;
+  margin-bottom: 1.25rem;
+
+  &-line {
+    height: 100%;
+    --chakra-transition-property-common: background-color, border-color, color,
+      fill, stroke, opacity, box-shadow, transform;
+    background: linear-gradient(to right, #009999, #00cccc);
+    transition-duration: 300ms;
+    transition-property: var(--chakra-transition-property-common);
+  }
+}
+
+.form-select {
+  webkit-box-align: center;
+  align-items: center;
+  cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  min-height: 38px;
+  position: relative;
+  transition: all 100ms ease 0s;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(204, 204, 204);
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  width: auto;
+  outline: 0px !important;
+}
+
+.media {
+  flex-direction: row;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.media-container {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+}
+
+.media-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-block {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+
+  & svg {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 0.5rem;
+    color: #009999;
+  }
+
+  & input {
+    height: 2rem;
+    font-size: 14px;
+    padding-inline-start: 0.75rem;
+    padding-inline-end: 0.75rem;
+    min-width: 0px;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    position: relative;
+    appearance: none;
+    width: 100%;
+    border-width: 2px;
+    border-style: solid;
+    border-image: initial;
+    border-radius: 10px;
+    border-color: #009999;
+  }
+}

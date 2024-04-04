@@ -10,6 +10,7 @@ import { Title } from "../../UI/Title/Title";
 import "./Guide.scss";
 import Trip from "./components/Trip/Trip";
 import About from "./components/About/About";
+import GuidePrice from "../../GuidePrice/GuidePrice";
 const Guide = () => {
   const { store } = useContext(Context);
   const { id } = useParams();
@@ -74,8 +75,8 @@ const Guide = () => {
 
                   <div className="guide-profile-info__cities">
                     {store.guide.cities?.map((c) => (
-                      <div key={c} className="guide-profile-info__cities-btn">
-                        <h5>{c}</h5>
+                      <div key={c._id} className="guide-profile-info__cities-btn">
+                        <h5>{c.name}</h5>
                       </div>
                     ))}
                   </div>
@@ -154,82 +155,7 @@ const Guide = () => {
 
           {selectedItem === "2" && <Trip trips={store.trips} />}
 
-          <div className="guide-price">
-            <div className="guide-price-content">
-              <Title
-                variant="h2"
-                color="#fff"
-                className="guide-price-content-title"
-              >
-                Не важно, какого локали Вы выберете и куда отправитесь в
-                путешествие. Цена — едина.
-              </Title>
-
-              <p className="guide-price-content-desc">
-                Необязательно выбирать только одну конкретную прогулку из
-                списка. Локали с удовольствием подберет для вас персональную
-                программу, которая может быть сложена сразу из нескольких
-                прогулок. А может вы получите вовсе что-то эксклюзивное и
-                секретное, чего нет на сайте! Насчет стоимости переживать не
-                стоит - все просто и прозрачно. Итоговая цена сложится
-                автоматически, отталкиваясь от единого тарифа:
-              </p>
-
-              <div className="guide-price-content-cards">
-                <Card
-                  className="guide-price-content-cards-item"
-                  type="price"
-                  color="rgb(255, 203, 56)"
-                >
-                  <CardItem
-                    title="Полдня"
-                    description="Чаще всего, 3-4 часа"
-                    variant="price"
-                    price={99}
-                  />
-                </Card>
-
-                <Card
-                  className="guide-price-content-cards-item"
-                  type="price"
-                  color="rgb(255, 203, 56)"
-                >
-                  <CardItem
-                    title="Полдня"
-                    description="Чаще всего, 3-4 часа"
-                    variant="price"
-                    price={99}
-                  />
-                </Card>
-
-                <Card
-                  className="guide-price-content-cards-item"
-                  type="price"
-                  color="rgb(255, 203, 56)"
-                >
-                  <CardItem
-                    title="Полдня"
-                    description="Чаще всего, 3-4 часа"
-                    variant="price"
-                    price={99}
-                  />
-                </Card>
-
-                <Card
-                  className="guide-price-content-cards-item"
-                  type="price"
-                  color="rgb(255, 203, 56)"
-                >
-                  <CardItem
-                    title="Полдня"
-                    description="Чаще всего, 3-4 часа"
-                    variant="price"
-                    price={99}
-                  />
-                </Card>
-              </div>
-            </div>
-          </div>
+          <GuidePrice />
 
           <div className="guide-info">
             <div className="guide-info-content">

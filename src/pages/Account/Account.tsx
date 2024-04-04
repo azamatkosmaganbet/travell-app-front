@@ -14,6 +14,9 @@ import InfoCard from "../../components/InfoCard/InfoCard";
 import { FaUserCircle } from "react-icons/fa";
 import { Spinner } from "react-bootstrap";
 import { MdOutlineVerified } from "react-icons/md";
+import { FaCity } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa";
+import { MdOutlineTour } from "react-icons/md";
 const Account = () => {
   const { store } = useContext(Context);
   const fileInputRef = useRef(null);
@@ -143,15 +146,33 @@ const Account = () => {
           </div>
 
           <div className="profile-info">
-            <InfoCard tag="Personal Information" type="solo" />
+            <InfoCard
+              tag="Стать Гидом"
+              type="solo"
+              url="/info/become-localie"
+              icon={<MdOutlineTour className="account-icon" color="#375E97" />}
+            />
 
             <InfoCard tag="Become a GO" type="solo" title="My GO Profiles" />
 
             <InfoCard tag="Become a GO" type="solo" title="Settings" />
 
             <div className="profile-cards">
-              <InfoCard type="combined" title="Information" tag="Become a GO" />
-              <InfoCard type="combined" tag="Contact Support" />
+              <InfoCard
+                type="combined"
+                title="Information"
+                tag="Создать город"
+                url="/create/city"
+                icon={<FaCity className="account-icon" color="#375E97" />}
+              />
+              <InfoCard
+                type="combined"
+                tag="Список гидов"
+                url="/guide/list"
+                icon={
+                  <FaClipboardList className="account-icon" color="#375E97" />
+                }
+              />
               <InfoCard type="combined" tag="About us" />
               <InfoCard type="combined" tag="Review" />
               <InfoCard

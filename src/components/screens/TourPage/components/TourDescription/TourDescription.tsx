@@ -9,9 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 interface ITour {
   tour: ITrip;
+  isLoading: boolean;
 }
 
-const TourDescription: FC<ITour> = ({ tour }) => {
+const TourDescription: FC<ITour> = ({ tour, isLoading }) => {
   const navigate = useNavigate();
   return (
     <div className="description">
@@ -22,7 +23,28 @@ const TourDescription: FC<ITour> = ({ tour }) => {
             <div className="description-faq-inner">
               <Card type="info" color="#fff">
                 <h3>Путешествие организует</h3>
-                <div className="description-faq-user">
+                {isLoading ? (
+                  <>
+                    <span className="placeholder col-6"></span>
+                    <span className="placeholder mt-2 w-75"></span>
+                    <span
+                      className="placeholder mt-2 w-25"
+                      style={{ width: "25% " }}
+                    ></span>
+                  </>
+                ) : (
+                  <div className="description-faq-user">
+                    <img alt="" src={`${BASE_URL}/${tour.guide?.avatar}`} />
+                    <div className="description-faq-user-desc">
+                      <b>{tour.guide?.name}</b>
+                      <span>Люблю и вдохновляюсь Стамбулом</span>
+                    </div>
+                    <div className="description-faq-user-verified">
+                      {tour.guide?.isActivated && <Verified />}
+                    </div>
+                  </div>
+                )}
+                {/* <div className="description-faq-user">
                   <img alt="" src={`${BASE_URL}/${tour.guide?.avatar}`} />
                   <div className="description-faq-user-desc">
                     <b>{tour.guide?.name}</b>
@@ -31,7 +53,7 @@ const TourDescription: FC<ITour> = ({ tour }) => {
                   <div className="description-faq-user-verified">
                     {tour.guide?.isActivated && <Verified />}
                   </div>
-                </div>
+                </div> */}
 
                 <div className="description-faq-actions">
                   <button className="">Написать локали</button>

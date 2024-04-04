@@ -76,6 +76,7 @@ img {
   --orange: #fb6542;
   --red: #ff0000;
   --green: #009999;
+  --vh: 9.53px;
 }
 
 @keyframes expand {

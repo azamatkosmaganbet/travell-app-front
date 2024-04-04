@@ -1,0 +1,180 @@
+@import "../../../styles/mixins";
+.city {
+  padding-top: 64px;
+  width: 100%;
+  position: relative;
+  transition: filter 0.2s ease-in 0s;
+  min-height: 100vh;
+}
+
+.city-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.city-top {
+  display: flex;
+  margin-top: 1rem;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.city-title {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  overflow: auto hidden;
+  max-width: 1062px;
+
+  & h2 {
+    font-size: 48px;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-align: center;
+    font-weight: 900;
+
+    @include _744 {
+      font-size: 28px;
+    }
+  }
+}
+
+.city-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  transform: none;
+  transform-origin: 50% 50% 0px;
+}
+
+.city-cards {
+  display: flex;
+  width: 100%;
+  max-width: 1070px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+.city-cards-inner {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.city-tourmate-card {
+  width: 296px;
+  display: flex;
+  margin: 8px;
+  min-width: 340px;
+
+  @include _744 {
+    width: auto;
+  }
+
+  &-desc {
+    min-height: 48px;
+    width: 100%;
+    text-align: left;
+    padding: 0px 24px;
+  }
+
+  &-btn {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 85%;
+
+    &-inner {
+      width: auto;
+      display: flex;
+      cursor: pointer;
+      margin: 1rem 0;
+
+      & button {
+        display: inline-flex;
+        appearance: none;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        position: relative;
+        white-space: nowrap;
+        vertical-align: middle;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        line-height: 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s;
+        height: max-content;
+        min-width: 2.5rem;
+        font-size: 16px;
+        padding-inline-start: 24px;
+        padding-inline-end: 24px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border: 0;
+        color: #fff;
+        background-image: linear-gradient(to right, #f44040, #ff6666);
+        width: 100%;
+        color: #fff;
+        background: #ff5b5b;
+
+        &:hover {
+          background: #ff9090;
+          background-image: unset;
+          -webkit-text-decoration: unset;
+          text-decoration: unset;
+        }
+      }
+    }
+  }
+
+  &-title {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+    padding: 0px 24px;
+
+    & h5 {
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 900;
+      margin-right: 1rem;
+    }
+  }
+
+  &-content {
+    display: flex;
+    background: #fff;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 24px;
+    width: 100%;
+    position: relative;
+
+    & img {
+      object-fit: cover;
+      width: 340px;
+      height: 297px;
+      border-radius: 24px;
+      box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 50px;
+      margin-bottom: 0.75rem;
+    }
+  }
+}

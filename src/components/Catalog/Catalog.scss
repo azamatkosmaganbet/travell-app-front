@@ -1,0 +1,40 @@
+@import "../../styles/mixins";
+
+.content {
+  padding-inline: 90px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 30px;
+  background-color: #009999;
+
+  @include _744 {
+    padding-inline-end: 1.25rem;
+    padding-inline-start: 1.25rem;
+  }
+
+  &-text {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: flex-start;
+    max-width: 1060px;
+
+    @include _744 {
+      display: flex;
+      flex-direction: column;
+      -webkit-box-pack: start;
+      justify-content: flex-start;
+      width: 100%;
+      padding-bottom: 2.5rem;
+      padding-top: 2.5rem;
+      
+    }
+  }
+}

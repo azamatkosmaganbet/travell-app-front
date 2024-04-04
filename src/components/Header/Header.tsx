@@ -10,8 +10,11 @@ import { ReactComponent as MbHome } from "../../assets/icons/home.svg";
 import { ReactComponent as News } from "../../assets/icons/news.svg";
 import { ReactComponent as Search } from "../../assets/icons/search.svg";
 import { ReactComponent as Trip } from "../../assets/icons/trip.svg";
+import { ReactComponent as Logo } from "../../assets/icons/mb-logo.svg";
 import { BASE_URL } from "../../constants/api";
 import "./Header.scss";
+import { CiSearch } from "react-icons/ci";
+import { FaUser } from "react-icons/fa";
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -73,8 +76,38 @@ const Header = () => {
   const isHomePage = location.pathname === "/";
   const isTourPage = location.pathname.startsWith("/tour/");
 
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = 500; // Максимальный скролл, при котором opacity будет 0
+      const newOpacity = 0 + scrollTop / maxScroll;
+      setOpacity(newOpacity < 0 ? 0 : newOpacity); // Ограничиваем opacity, чтобы не было отрицательных значений
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
+      <div className="page-header">
+        <div className="page-header-bg" style={{ opacity: opacity }}></div>
+        <div className="page-header-nav">
+          <div className="page-header-nav-left">
+            <button>
+              <Logo />
+            </button>
+          </div>
+          <button className="page-header-nav-right">
+            <CiSearch />
+          </button>
+        </div>
+      </div>
       <div className={classNames("header", isScrolled)}>
         <div className="header-inner">
           <div className="header-left">
@@ -83,7 +116,9 @@ const Header = () => {
                 <Home
                   style={{
                     color:
-                      !isHomePage && !isTourPage ? "#000" : "hsl(0deg 0% 100%)",
+                      (!isHomePage && !isTourPage) || opacity > 0
+                        ? "#000"
+                        : "hsl(0deg 0% 100%)",
                   }}
                 />
               </a>
@@ -99,7 +134,9 @@ const Header = () => {
                 <Chat
                   style={{
                     color:
-                      !isHomePage && !isTourPage ? "#000" : "hsl(0deg 0% 100%)",
+                      (!isHomePage && !isTourPage) || opacity > 0
+                        ? "#000"
+                        : "hsl(0deg 0% 100%)",
                   }}
                 />
               </button>
@@ -115,7 +152,9 @@ const Header = () => {
                 <BsBasket3
                   style={{
                     color:
-                      !isHomePage && !isTourPage ? "#000" : "hsl(0deg 0% 100%)",
+                      (!isHomePage && !isTourPage) || opacity > 0
+                        ? "#000"
+                        : "hsl(0deg 0% 100%)",
                   }}
                 />
               </button>
@@ -131,7 +170,9 @@ const Header = () => {
                 <Trip
                   style={{
                     color:
-                      !isHomePage && !isTourPage ? "#000" : "hsl(0deg 0% 100%)",
+                      (!isHomePage && !isTourPage) || opacity > 0
+                        ? "#000"
+                        : "hsl(0deg 0% 100%)",
                   }}
                 />
               </button>
@@ -144,12 +185,28 @@ const Header = () => {
 
             <div className="header-left-icon">
               <button className="header-left-icon-btn">
-                <News
-                  style={{
-                    color:
-                      !isHomePage && !isTourPage ? "#000" : "hsl(0deg 0% 100%)",
-                  }}
-                />
+                {store.isAuth ? (
+                  <News
+                    style={{
+                      color:
+                        (!isHomePage && !isTourPage) || opacity > 0
+                          ? "#000"
+                          : "hsl(0deg 0% 100%)",
+                    }}
+                  />
+                ) : (
+                  <FaUser
+                    onClick={() => {
+                      navigate(`/login`);
+                    }}
+                    style={{
+                      color:
+                        (!isHomePage && !isTourPage) || opacity > 0
+                          ? "#000"
+                          : "hsl(0deg 0% 100%)",
+                    }}
+                  />
+                )}
               </button>
 
               <a href="/" className="header-left-icon-mb-btn">

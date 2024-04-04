@@ -9,7 +9,7 @@ import "./TourmateList.scss";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 interface TourmateListProps {
-  data: IGuide[];
+  data: any;
   title?: string;
   type?: "default" | "city";
 }
@@ -39,7 +39,7 @@ const TourmateList: FC<TourmateListProps> = ({ data, title, type }) => {
             },
           }}
         >
-          {data?.map((el) => (
+          {data?.map((el: any) => (
             <SwiperSlide className="swiper-card">
               <TourmateCard key={el.id} type={type} tourmate={el} />
             </SwiperSlide>

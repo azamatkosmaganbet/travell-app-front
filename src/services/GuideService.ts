@@ -13,4 +13,6 @@ export default class GuideService {
 
     return $api.get<IGuide>(`/guide/${id}`);
   }
+
+  
 }

@@ -1,9 +1,5 @@
 import { observer } from "mobx-react-lite";
-import {
-  BrowserRouter,
-  Route,
-  Routes
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import Toast from "./components/Toast/Toast";
 import TourPage from "./components/screens/TourPage/TourPage";
@@ -13,6 +9,11 @@ import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import Register from "./pages/Register/Register";
 import Verification from "./pages/Verification/Verification";
+import City from "./pages/City/City";
+import CreateCity from "./pages/CreateCity/CreateCity";
+import GuideList from "./pages/GuideList/GuideList";
+import BecomeLocalie from "./pages/BecomeLocalie/BecomeLocalie";
+import Quiz from "./pages/Quiz/Quiz";
 
 function App() {
   return (
@@ -27,6 +28,11 @@ function App() {
           <Route element={<Verification />} path="/verification" />
           <Route element={<GuidePage />} path="/guide/:id" />
           <Route element={<TourPage />} path="/tour/:id" />
+          <Route element={<City />} path="/city/:id" />
+          <Route element={<CreateCity />} path="/create/city" />
+          <Route element={<GuideList />} path="/guide/list" />
+          <Route element={<BecomeLocalie />} path="/info/become-localie" />
+          <Route element={<Quiz />} path="/account/application" />
         </Route>
       </Routes>
     </BrowserRouter>

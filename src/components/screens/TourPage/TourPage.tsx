@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { Button, Form, Modal, Spinner } from "react-bootstrap";
 import { observer } from "mobx-react-lite";
 import { BASE_URL } from "../../../constants/api";
+import TourPrice from "../../TourPrice/TourPrice";
 const TourPage = () => {
   const { store } = useContext(Context);
   const { id } = useParams();
@@ -48,46 +49,9 @@ const TourPage = () => {
   return (
     <div className="tour">
       <TourHero handleShow={handleShow} tour={store.trip} />
-      <TourDescription tour={store.trip} />
+      <TourDescription isLoading={store.isLoading} tour={store.trip} />
       <TourRoute tour={store.trip} />
-      <div className="tour-price">
-        <div className="tour-price-content">
-          <div className="tour-price-wrapper">
-            <h2>Стоимость</h2>
-            <div className="tour-price-total">
-              <div className="tour-price-total-top">
-                <h3>
-                  <span>Общая стоимость</span>
-                </h3>
-                <div>
-                  <b>$149</b>
-                </div>
-              </div>
-              <ul className="tour-price-total-bottom">
-                <li>
-                  <p>
-                    <span>Продолжительность прогулки</span>
-                  </p>
-                  <div className="tour-price-total-bottom-day">
-                    <p>
-                      <span>1 день</span>
-                    </p>
-                    <span className="tour-price-total-bottom-day-price">
-                      <span>$149</span>
-                    </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="tour-price-notice">
-              <div className="tour-price-notice-icon">
-                <Notice />
-              </div>
-              <p>Цена за 1 человека. Всего в группе — не более 8 человек.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TourPrice />
 
       <Modal show={show} onHide={handleClose}>
         {" "}
@@ -126,7 +90,14 @@ const TourPage = () => {
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Дата </Form.Label>
-              <Form.Control value={date} onChange={(e) => {setDate(e.target.value)}} type="date" placeholder="" />
+              <Form.Control
+                value={date}
+                onChange={(e) => {
+                  setDate(e.target.value);
+                }}
+                type="date"
+                placeholder=""
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -143,7 +114,11 @@ const TourPage = () => {
           <Button variant="secondary" onClick={handleClose}>
             Закрыть
           </Button>
-          <Button type="submit" variant="btn text-white bg-orange" onClick={handleClose}>
+          <Button
+            type="submit"
+            variant="btn text-white bg-orange"
+            onClick={handleClose}
+          >
             Забронировать
           </Button>
         </Modal.Footer>

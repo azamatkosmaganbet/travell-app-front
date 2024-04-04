@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 .footer {
   padding: 40px;
   box-sizing: border-box;
@@ -8,6 +10,10 @@
   justify-content: center;
   background: #fff;
   border-top: 1px solid #f6f6f6;
+
+  @include _744 {
+    padding: 20px 20px 96px;
+  }
 
   &-content {
     flex-direction: row;
@@ -21,6 +27,16 @@
     flex-direction: row;
     padding-bottom: 0px;
     max-width: 960px;
+
+    @include _744 {
+      box-sizing: border-box;
+      margin: 0px;
+      min-width: 0px;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: space-between;
+      padding-bottom: 48px;
+    }
   }
 }
 
@@ -31,6 +47,11 @@
   display: flex;
   width: 33.3333%;
   flex-direction: column;
+
+  @include _744 {
+    width: 100%;
+    display: none;
+  }
 
   & h4 {
     font-size: 20px;
@@ -63,6 +84,17 @@
   display: flex;
   flex-wrap: wrap;
 
+  @include _744 {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 0px;
+  }
+
   &-menu {
     width: auto;
     padding-right: 48px;
@@ -72,6 +104,15 @@
     display: flex;
     max-width: 224px;
     flex-direction: column;
+
+    @include _744 {
+      box-sizing: border-box;
+      margin: 0px;
+      min-width: 0px;
+      display: flex;
+      width: 50%;
+      padding-right: 0px;
+    }
 
     & h4 {
       font-size: 16px;

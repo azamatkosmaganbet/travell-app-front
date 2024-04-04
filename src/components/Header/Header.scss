@@ -328,6 +328,9 @@
   &-avatar {
     margin-right: 0.25rem;
     cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
 
     & img {
       height: 36px;
@@ -337,5 +340,119 @@
       border-radius: 100%;
       padding: 6px;
     }
+  }
+}
+
+.page-header {
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+
+  &-bg {
+    width: 100%;
+    position: absolute;
+    background: #fff;
+    height: 64px;
+    display: flex;
+
+    @include _744 {
+      height: 48px;
+    }
+  }
+
+  &-nav {
+    display: none;
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    top: 0px;
+    padding-bottom: 3px;
+    padding-top: 0.25rem;
+    padding-inline-end: 1.25rem;
+    padding-inline-start: 1.25rem;
+
+    @include _744 {
+      display: flex;  
+    }
+
+    &-left {
+      align-items: flex-start;
+      width: 100%;
+      display: flex;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      -webkit-justify-content: flex-start;
+      justify-content: flex-start;
+
+      & button {
+        display: inline-flex;
+        appearance: none;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        user-select: none;
+        position: relative;
+        white-space: nowrap;
+        vertical-align: middle;
+        outline: transparent solid 2px;
+        outline-offset: 2px;
+        line-height: 24px;
+        border-radius: 32px;
+        filter: grayscale(1);
+        color: rgb(0, 0, 0);
+        font-weight: 600;
+        transition: all 0.3s ease 0s;
+        height: max-content;
+        min-width: 40px;
+        font-size: 16px;
+        padding-inline: 24px;
+        min-height: 40px;
+        padding: 0.5rem;
+        margin-left: calc(0.5rem * -1);
+        border: none;
+        background: transparent;
+
+        & svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
+
+.page-header-nav-right {
+  display: inline-flex;
+  appearance: none;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  line-height: 24px;
+  border-radius: 32px;
+  font-weight: 600;
+  transition: all 0.3s ease 0s;
+  height: max-content;
+  min-width: 40px;
+  font-size: 16px;
+  padding-inline: 24px;
+  background-color: transparent;
+  min-height: 40px;
+  padding: 0px;
+  filter: grayscale(1);
+  border: 0;
+  color: rgb(0, 0, 0);
+
+  & svg {
+    width: 24px;
+    height: 24px;
   }
 }

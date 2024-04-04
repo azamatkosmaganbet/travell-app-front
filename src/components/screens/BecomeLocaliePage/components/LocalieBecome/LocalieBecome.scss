@@ -1,0 +1,81 @@
+@import "../../../../../styles/mixins";
+
+.localie-become {
+  width: 100%;
+  background: #f6f6f6;
+
+  & h2 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+    color: #fff;
+
+    @include _744 {
+      line-height: 1.33;
+      font-size: 28px;
+    }
+  }
+
+  &-cards {
+    margin-left: -6px;
+    display: flex;
+    justify-content: space-around;
+    max-width: 1060px;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include _744 {
+      flex-wrap: wrap;
+      width: 100%;
+      margin-left: 0px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    &-step {
+      min-height: 140px;
+      width: 500px;
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 30px;
+      -webkit-box-align: center;
+      align-items: center;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding-inline-start: 1.25rem;
+      padding-inline-end: 1.25rem;
+
+      @include _744 {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        min-height: 80px;
+        width: 100%;
+      }
+
+      & p {
+        margin-inline-start: 2rem !important;
+        margin-inline-end: 2rem !important;
+        font-weight: 600;
+        width: 100%;
+
+        @include _744 {
+          margin-inline-start: 1rem !important;
+          margin-inline-end: 1rem !important;
+          font-weight: normal;
+        }
+      }
+
+      & svg {
+        width: 40px;
+        height: 40px;
+        color: #009999 !important;
+        fill: #009999 !important;
+        stroke: #009999 !important;
+      }
+    }
+  }
+}

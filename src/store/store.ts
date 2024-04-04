@@ -7,11 +7,13 @@ import { toast } from "react-toastify";
 import { API_URL } from "../constants/api";
 import UserService from "../services/UserService";
 import GuideService from "../services/GuideService";
+import CityService from "../services/CityService";
 import { IGuide } from "../models/IGuide";
 import { ITrip } from "../models/ITrip";
 import TripService from "../services/TripService";
 import { IBooking } from "../models/IBooking";
 import BookingService from "../services/BookingService";
+import { ICity, ICityData } from "../models/ICity";
 
 export default class Store {
   user = {} as IUser;
@@ -19,6 +21,8 @@ export default class Store {
   guide = {} as IGuide;
   trips = [] as ITrip[];
   trip = {} as ITrip;
+  cities = [] as ICity[];
+  city = {} as ICityData;
   isAuth = false;
   isLoading = false;
 
@@ -28,6 +32,14 @@ export default class Store {
 
   setAuth(bool: boolean) {
     this.isAuth = bool;
+  }
+
+  setCities(cities: ICity[]) {
+    this.cities = cities;
+  }
+
+  setCity(city: ICityData) {
+    this.city = city;
   }
 
   setUser(user: IUser) {
@@ -224,8 +236,96 @@ export default class Store {
       this.setLoading(true);
       const response = await BookingService.createBooking(data);
 
-      toast.success("Вы успешо забронировали тур")
+      toast.success("Вы успешо забронировали тур");
     } catch (e: any) {
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async getCities() {
+    try {
+      this.setLoading(true);
+      const response = await CityService.fetchCities();
+
+      this.setCities(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении Трипа");
+      this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async getCitiesById(id: string) {
+    try {
+      this.setLoading(true);
+      const response = await CityService.fetchCityById(id);
+
+      this.setCity(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении Трипа");
+      this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async createCity(name: string, imageFile: File) {
+    try {
+      this.setLoading(true);
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("file", imageFile);
+
+      const response = await axios.post(`${API_URL}/create/city`, formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      toast.success("Вы успешно создали город !");
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to create city");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async createGuideRequest(data: any) {
+    try {
+      this.setLoading(true);
+
+      const response = await axios.post(`${API_URL}/send-guide-request`, data, {
+        withCredentials: true,
+      });
+      toast.success("Вы успешно подали запрос ! Наши модераторы уже обрабатывают");
+
+      setTimeout(() => {
+        window.location.href = "/"
+      }, 2000)
+      return response.data;
+    } catch (e) {
+      toast.error("Что то пошло не так");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async updateUserStatus(id: string, status: string) {
+    try {
+      this.setLoading(true);
+      const response = await axios
+        .put(`${API_URL}/update/guide-status/${id}`, { status: status })
+        .then(() => {
+          this.getGuides();
+        });
+
+      toast.success("Вы успешно обновили статус !");
+    } catch (e: any) {
+      toast.error("Ошибка при обнолвении статуса");
+      this.setLoading(false);
     } finally {
       this.setLoading(false);
     }

@@ -16,6 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     store.getGuides();
+    store.getCities();
   }, []);
 
   // if (store.isLoading) {
@@ -40,7 +41,7 @@ const Home = () => {
       <TourmateList
         type="city"
         title="Локали доступен в 350 городах на всех континентах 🌎"
-        data={store.guides}
+        data={store.cities}
       />
     </>
   );
