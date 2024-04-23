@@ -12,4 +12,8 @@ export default class TripService {
   static fetchTripById(id: string): Promise<AxiosResponse<ITrip>> {
     return $api.get<ITrip>(`/trip/${id}`);
   }
+
+  static updateTripById(id: string, data: Partial<ITrip>): Promise<AxiosResponse<ITrip>> {
+    return $api.put<ITrip>(`/update/trip/${id}`, data);
+  }
 }

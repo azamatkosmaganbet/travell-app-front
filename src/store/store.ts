@@ -300,11 +300,13 @@ export default class Store {
       const response = await axios.post(`${API_URL}/send-guide-request`, data, {
         withCredentials: true,
       });
-      toast.success("Вы успешно подали запрос ! Наши модераторы уже обрабатывают");
+      toast.success(
+        "Вы успешно подали запрос ! Наши модераторы уже обрабатывают"
+      );
 
       setTimeout(() => {
-        window.location.href = "/"
-      }, 2000)
+        window.location.href = "/";
+      }, 2000);
       return response.data;
     } catch (e) {
       toast.error("Что то пошло не так");
@@ -326,6 +328,95 @@ export default class Store {
     } catch (e: any) {
       toast.error("Ошибка при обнолвении статуса");
       this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async createTrip(data: any) {
+    try {
+      this.setLoading(true);
+      console.log(data);
+
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+      formData.append("day", data.day);
+      formData.append("city", data.city);
+      formData.append("guideId", data.guide);
+      formData.append("file", data.file);
+
+      const response = await axios.post(`${API_URL}/create/trip`, formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      toast.success("Вы успешно создали трип!");
+
+      return response.data;
+    } catch (e) {
+      toast.error("Что то пошло не так");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async createRoute(data: any) {
+    try {
+      this.setLoading(true);
+      const response = await axios.post(`${API_URL}/create/route`, data)
+      toast.success("Вы успешно создали маршрут!");
+      
+      return response.data;
+
+      
+    } catch (e: any) {
+      toast.error("Что то пошло не так");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async createStop(data: any) {
+    try {
+      this.setLoading(true);
+      console.log(data);
+
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("description", data.description);
+      formData.append("route", data.route);
+      formData.append("file", data.image);
+
+      const response = await axios.post(`${API_URL}/create/stop`, formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      toast.success("Вы успешно создали трип!");
+
+      return response.data;
+    } catch (e) {
+      toast.error("Что то пошло не так");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async updateTripById(id: string, data: Partial<ITrip>) {
+    try {
+      this.setLoading(true);
+      const response = await TripService.updateTripById(id, data);
+
+      toast.success("Вы успешно обновили страницу");
+      this.getTripById(id);
+      return response.data;
+    } catch (e: any) {
+      toast.error("Что то пошло не так")
     } finally {
       this.setLoading(false);
     }

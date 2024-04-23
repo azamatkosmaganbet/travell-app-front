@@ -1,22 +1,18 @@
-import React, {
+import { observer } from "mobx-react-lite";
+import {
   ChangeEvent,
   useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
-import "./Account.scss";
-import { Context } from "../..";
-import { observer } from "mobx-react-lite";
-import { useParams } from "react-router-dom";
-import { Title } from "../../components/UI/Title/Title";
-import InfoCard from "../../components/InfoCard/InfoCard";
-import { FaUserCircle } from "react-icons/fa";
-import { Spinner } from "react-bootstrap";
-import { MdOutlineVerified } from "react-icons/md";
-import { FaCity } from "react-icons/fa";
-import { FaClipboardList } from "react-icons/fa";
+import { FaCity, FaClipboardList, FaTripadvisor, FaUserCircle } from "react-icons/fa";
 import { MdOutlineTour } from "react-icons/md";
+import { useParams } from "react-router-dom";
+import { Context } from "../..";
+import InfoCard from "../../components/InfoCard/InfoCard";
+import { Title } from "../../components/UI/Title/Title";
+import "./Account.scss";
 const Account = () => {
   const { store } = useContext(Context);
   const fileInputRef = useRef(null);
@@ -44,33 +40,6 @@ const Account = () => {
     }
   };
 
-  // if (store.isLoading) {
-  //   return (
-  //     <div className="text-center">
-  //       <Spinner />
-  //     </div>
-  //   );
-  // }
-
-  // if (!store.isAuth) {
-  //   return (
-  //     <div>
-  //       <div>
-  //         <h1>Привет 👋</h1>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-  // if (store.isLoading) {
-  //   return (
-  //     <div>
-  //       <p className="placeholder-glow">
-  //         <span className="placeholder col-12"></span>
-  //       </p>
-  //     </div>
-  //   );
-  // }
 
   return (
     <section className="main section">
@@ -138,8 +107,8 @@ const Account = () => {
                 </p>
               ) : (
                 <Title variant="h3">
-                  {store.user.name} {store.user.surname}{" "}
-                  {store.user.isActivated && <MdOutlineVerified fill="green" />}
+                  {store.user.name} {store.user.surname}
+                  {/* {store.user.isActivated && <MdOutlineVerified fill="green" />} */}
                 </Title>
               )}
             </div>
@@ -153,9 +122,15 @@ const Account = () => {
               icon={<MdOutlineTour className="account-icon" color="#375E97" />}
             />
 
-            <InfoCard tag="Become a GO" type="solo" title="My GO Profiles" />
+            <InfoCard
+              tag="Создать Трип"
+              type="solo"
+              title="Создать Трип"
+              url="/create/trip"
+              icon={<FaTripadvisor className="account-icon" color="#375E97" />}
+            />
 
-            <InfoCard tag="Become a GO" type="solo" title="Settings" />
+            <InfoCard tag="Мои трипы" type="solo" title="Мои трипы" url={`/my-trips/${id}`} />
 
             <div className="profile-cards">
               <InfoCard

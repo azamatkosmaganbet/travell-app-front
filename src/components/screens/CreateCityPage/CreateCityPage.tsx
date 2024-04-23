@@ -3,6 +3,7 @@ import "./CreateCityPage.scss";
 import { Button, Form } from "react-bootstrap";
 import { Context } from "../../..";
 import { toast } from "react-toastify";
+import { observer } from "mobx-react-lite";
 
 const CreateCityPage = () => {
   const [city, setCity] = useState("");
@@ -64,4 +65,4 @@ const CreateCityPage = () => {
   );
 };
 
-export default CreateCityPage;
+export default observer(CreateCityPage);

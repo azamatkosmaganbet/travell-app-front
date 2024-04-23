@@ -3,13 +3,16 @@ import "./TourHero.scss";
 import { Button } from "react-bootstrap";
 import { ITrip } from "../../../../../models/ITrip";
 import { BASE_URL } from "../../../../../constants/api";
+import { IUser } from "../../../../../models/IUser";
+import { Link } from "react-router-dom";
 
 interface ITourProps {
   tour: ITrip;
   handleShow: () => void;
+  user: IUser;
 }
 
-const TourHero: FC<ITourProps> = ({ tour, handleShow }) => {
+const TourHero: FC<ITourProps> = ({ tour, handleShow, user }) => {
   return (
     <div
       className="tour-hero"
@@ -26,9 +29,20 @@ const TourHero: FC<ITourProps> = ({ tour, handleShow }) => {
         <h1>{tour?.title}</h1>
         <p className="tour-hero-content-helper"></p>
         <div className="tour-hero-content-reserve">
-          <Button onClick={handleShow} className="btn border-0 bg-orange btn-lg w-50">
-            Забронировать
-          </Button>
+          {user.role === "tourist" ? (
+            <Button
+              className="btn border-0 bg-orange btn-lg w-50"
+            >
+              <Link to={`/tour/edit/${tour._id}`}>Редактировать</Link>
+            </Button>
+          ) : (
+            <Button
+              onClick={handleShow}
+              className="btn border-0 bg-orange btn-lg w-50"
+            >
+              Забронировать
+            </Button>
+          )}
         </div>
         <p className="tour-hero-content-desc">Пока вы ни за что не платите</p>
       </div>

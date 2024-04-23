@@ -48,7 +48,7 @@ const TourPage = () => {
 
   return (
     <div className="tour">
-      <TourHero handleShow={handleShow} tour={store.trip} />
+      <TourHero user={store.user} handleShow={handleShow} tour={store.trip} />
       <TourDescription isLoading={store.isLoading} tour={store.trip} />
       <TourRoute tour={store.trip} />
       <TourPrice />

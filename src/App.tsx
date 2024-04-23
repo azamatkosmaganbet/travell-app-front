@@ -14,6 +14,9 @@ import CreateCity from "./pages/CreateCity/CreateCity";
 import GuideList from "./pages/GuideList/GuideList";
 import BecomeLocalie from "./pages/BecomeLocalie/BecomeLocalie";
 import Quiz from "./pages/Quiz/Quiz";
+import CreateTrip from "./pages/CreateTrip/CreateTrip";
+import MyTrips from "./pages/MyTrips/MyTrips";
+import EditTour from "./pages/EditTour/EditTour";
 
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
           <Route element={<GuideList />} path="/guide/list" />
           <Route element={<BecomeLocalie />} path="/info/become-localie" />
           <Route element={<Quiz />} path="/account/application" />
+          <Route element={<CreateTrip />} path="/create/trip" />
+          <Route element={<MyTrips />} path="/my-trips/:id" />
+          <Route element={<EditTour />} path="/tour/edit/:id" />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -8,4 +8,5 @@ export interface IUser {
   phone: string;
   avatar: string;
   registerDate: string;
+  role: string;
 }
