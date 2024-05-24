@@ -6,6 +6,9 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/react": "^6.1.11",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -24,10 +27,12 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
+    "react-star-ratings": "^2.3.0",
     "react-toastify": "^10.0.4",
     "sass": "^1.71.0",
     "swiper": "^11.0.6",
@@ -57,5 +62,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-star-ratings": "^2.3.3"
   }
 }

@@ -1,5 +1,6 @@
 import "./Hero.scss";
 import { CiSearch } from "react-icons/ci";
+import HeroImage from "../../assets/test/hero.png";
 const Hero = () => {
   return (
     <div className="hero">
@@ -7,7 +8,7 @@ const Hero = () => {
         <picture className="hero-picture">
           <img
             alt="Найти турмейта"
-            src="https://res.cloudinary.com/localie/image/upload/f_auto,w_1400,,dpr_1.0/v1593608071/content/landing/landingbg_mirrored.jpg"
+            src={"https://res.cloudinary.com/localie/image/upload/f_auto,w_1400,,dpr_1.0/v1593608071/content/landing/landingbg_mirrored.jpg"}
           />
         </picture>
       </div>

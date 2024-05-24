@@ -1,11 +1,16 @@
 import React from "react";
 import "./Footer.scss";
-
+import Logo from "../../assets/icons/f-logo.png";
+import Text from "../../assets/icons/f-logo-text.png";
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-left">
+          <div className="footer-left-logo">
+            <img src={Logo} />
+            <img src={Text} />
+          </div>
           <h4>
             Локали делает каждое путешествие проще, дешевле и еще более
             захватывающим.

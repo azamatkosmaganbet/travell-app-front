@@ -6,14 +6,18 @@ import { AuthResponse } from "../models/response/AuthResponse";
 import { toast } from "react-toastify";
 import { API_URL } from "../constants/api";
 import UserService from "../services/UserService";
+import ReviewService from "../services/ReviewService";
 import GuideService from "../services/GuideService";
 import CityService from "../services/CityService";
 import { IGuide } from "../models/IGuide";
 import { ITrip } from "../models/ITrip";
 import TripService from "../services/TripService";
-import { IBooking } from "../models/IBooking";
+import { IBooking, IBookingPost } from "../models/IBooking";
 import BookingService from "../services/BookingService";
 import { ICity, ICityData } from "../models/ICity";
+import { IReview, IReviewData } from "../models/IReview";
+import { IBlog } from "../models/IBlog";
+import BlogService from "../services/BlogService";
 
 export default class Store {
   user = {} as IUser;
@@ -21,8 +25,12 @@ export default class Store {
   guide = {} as IGuide;
   trips = [] as ITrip[];
   trip = {} as ITrip;
+  guidesCalendar = [] as IGuide[];
   cities = [] as ICity[];
   city = {} as ICityData;
+  bookings = [] as IBookingPost[];
+  reviews = {} as IReviewData;
+  blogs = [] as IBlog[];
   isAuth = false;
   isLoading = false;
 
@@ -32,6 +40,22 @@ export default class Store {
 
   setAuth(bool: boolean) {
     this.isAuth = bool;
+  }
+
+  setCalendarGuidesDefault() {
+    this.guidesCalendar = [];
+  }
+
+  setBlogs(blogs: IBlog[]) {
+    this.blogs = blogs;
+  }
+
+  setBooking(booking: IBookingPost[]) {
+    this.bookings = booking;
+  }
+
+  setReviews(reviews: IReviewData) {
+    this.reviews = reviews;
   }
 
   setCities(cities: ICity[]) {
@@ -143,6 +167,24 @@ export default class Store {
     }
   }
 
+  async getBookings() {
+    try {
+      this.setLoading(true);
+      this.setCalendarGuidesDefault();
+      const response = await BookingService.getBooking(this.user.id);
+      this.setBooking(response.data);
+      response.data.map((data: any) => {
+        console.log(data.tour.guide);
+        this.getGuideById(data.tour.guide);
+      });
+    } catch (e: any) {
+      toast.error("Ошибка при получении Брони");
+      this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
   async changeAvatar(id: string, avatarFile: File) {
     try {
       const formData = new FormData();
@@ -242,6 +284,58 @@ export default class Store {
       this.setLoading(false);
     }
   }
+  
+
+  async createBlog(data: any) {
+    try {
+      this.setLoading(true);
+      console.log(data)
+      const formData = new FormData();
+      formData.append("author", data.author); 
+      formData.append("content", data.content);
+      formData.append("title", data.title);
+
+      // Добавляем изображения в FormData
+      data.images.forEach((image: any) => {
+        formData.append(`files`, image);
+      });
+      
+      const response = await BlogService.createBlog(formData);
+      this.getBlogs();
+      toast.success("Вы успешо создали пост !");
+    } catch (e: any) {
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async createReview(data: any) {
+    try {
+      this.setLoading(true);
+      const response = await ReviewService.createReview(data);
+
+      this.getReviewById(data.userId);
+      toast.success("Вы успешно оставили отзыв");
+    } catch (e: any) {
+      toast.error("Что то пошло не так");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async getReviewById(id: string) {
+    try {
+      this.setLoading(true);
+      const response = await ReviewService.fetchReviewById(id);
+
+      this.setReviews(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении Трипа");
+      this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
 
   async getCities() {
     try {
@@ -249,6 +343,20 @@ export default class Store {
       const response = await CityService.fetchCities();
 
       this.setCities(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении Трипа");
+      this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async getBlogs() {
+    try {
+      this.setLoading(true);
+      const response = await BlogService.getBlogs();
+
+      this.setBlogs(response.data);
     } catch (e: any) {
       toast.error("Ошибка при получении Трипа");
       this.setLoading(false);
@@ -366,12 +474,10 @@ export default class Store {
   async createRoute(data: any) {
     try {
       this.setLoading(true);
-      const response = await axios.post(`${API_URL}/create/route`, data)
+      const response = await axios.post(`${API_URL}/create/route`, data);
       toast.success("Вы успешно создали маршрут!");
-      
-      return response.data;
 
-      
+      return response.data;
     } catch (e: any) {
       toast.error("Что то пошло не так");
     } finally {
@@ -416,7 +522,7 @@ export default class Store {
       this.getTripById(id);
       return response.data;
     } catch (e: any) {
-      toast.error("Что то пошло не так")
+      toast.error("Что то пошло не так");
     } finally {
       this.setLoading(false);
     }

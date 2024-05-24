@@ -11,6 +11,7 @@ import "./Guide.scss";
 import Trip from "./components/Trip/Trip";
 import About from "./components/About/About";
 import GuidePrice from "../../GuidePrice/GuidePrice";
+import Review from "../../Review/Review";
 const Guide = () => {
   const { store } = useContext(Context);
   const { id } = useParams();
@@ -23,9 +24,16 @@ const Guide = () => {
   useEffect(() => {
     if (id) {
       store.getGuideById(id);
+
       store.getTripsByGuideId(id);
     }
   }, [id, store]);
+
+  useEffect(() => {
+    if (store.guide._id) {
+      store.getReviewById(store.guide._id);
+    }
+  }, [store, store.guide._id]);
 
   if (store.isLoading) {
     return (
@@ -75,7 +83,10 @@ const Guide = () => {
 
                   <div className="guide-profile-info__cities">
                     {store.guide.cities?.map((c) => (
-                      <div key={c._id} className="guide-profile-info__cities-btn">
+                      <div
+                        key={c._id}
+                        className="guide-profile-info__cities-btn"
+                      >
                         <h5>{c.name}</h5>
                       </div>
                     ))}
@@ -89,7 +100,7 @@ const Guide = () => {
 
                     <a>
                       <div className="guide-profile-info__followers-r">
-                        <h5>31</h5>
+                        <h5>{store?.reviews?.reviews?.length}</h5>
                         <p>Отзывов</p>
                       </div>
                     </a>
@@ -154,6 +165,8 @@ const Guide = () => {
           {selectedItem === "1" && <About guide={store.guide} />}
 
           {selectedItem === "2" && <Trip trips={store.trips} />}
+
+          {selectedItem === "4" && <Review reviews={store.reviews}/>}
 
           <GuidePrice />
 

@@ -17,6 +17,8 @@ import Quiz from "./pages/Quiz/Quiz";
 import CreateTrip from "./pages/CreateTrip/CreateTrip";
 import MyTrips from "./pages/MyTrips/MyTrips";
 import EditTour from "./pages/EditTour/EditTour";
+import Calendar from "./pages/Calendar/Calendar";
+import Blogs from "./pages/Blogs/Blogs";
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
           <Route element={<CreateTrip />} path="/create/trip" />
           <Route element={<MyTrips />} path="/my-trips/:id" />
           <Route element={<EditTour />} path="/tour/edit/:id" />
+          <Route element={<Calendar />} path="/calendar" />
+          <Route element={<Blogs />} path="/blogs" />
         </Route>
       </Routes>
     </BrowserRouter>

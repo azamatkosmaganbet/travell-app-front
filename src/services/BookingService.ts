@@ -6,4 +6,8 @@ export default class BookingService {
   static createBooking(data: IBooking): Promise<AxiosResponse<IBooking>> {
     return $api.post<IBooking>(`/create/booking`, data);
   }
+
+  static getBooking (id: string) {
+    return $api.get(`/booking/${id}`)
+  }
 }

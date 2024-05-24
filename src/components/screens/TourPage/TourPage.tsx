@@ -17,7 +17,8 @@ const TourPage = () => {
   const [date, setDate] = useState<string>("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
   useEffect(() => {
     if (id) {
       store.getTripById(id);
@@ -41,9 +42,15 @@ const TourPage = () => {
       tourId: store.trip._id,
       guideId: store.trip.guide._id,
       userId: store.user.id,
+      adults: adults,
+      children: children,
     };
 
-    store.createBooking(data);
+    store.createBooking(data).then(() => {
+      setTimeout(() => {
+        window.location.href = "/calendar"
+      }, 2000)
+    });
   };
 
   return (
@@ -108,6 +115,26 @@ const TourPage = () => {
                 placeholder="Ваш номер телефона"
               />
             </Form.Group>
+
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Количество взрослых?</Form.Label>
+              <Form.Control
+                value={adults}
+                onChange={(e) => {setAdults(parseInt(e.target.value))}}
+                type="number"
+                placeholder="Количество взрослых?"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Количество детей?</Form.Label>
+              <Form.Control
+                value={children}
+                onChange={(e) => {setChildren(parseInt(e.target.value))}}
+                type="number"
+                placeholder="Количество взрослых?"
+              />
+            </Form.Group>
           </form>
         </Modal.Body>
         <Modal.Footer>
@@ -117,10 +144,10 @@ const TourPage = () => {
           <Button
             type="submit"
             variant="btn text-white bg-orange"
-            onClick={handleClose}
+            onClick={onSubmit}
           >
             Забронировать
-          </Button>
+          </Button> 
         </Modal.Footer>
       </Modal>
     </div>

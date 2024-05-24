@@ -8,7 +8,8 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  background: #fff;
+  background: #375E97;
+
   border-top: 1px solid #f6f6f6;
 
   @include _744 {
@@ -48,6 +49,20 @@
   width: 33.3333%;
   flex-direction: column;
 
+  &-logo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  & img {
+    width: 60px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
   @include _744 {
     width: 100%;
     display: none;
@@ -60,7 +75,7 @@
     text-transform: none;
     font-weight: 700;
     display: inline-block;
-    color: #545454;
+    color: #fff;
   }
 
   &-icon {
@@ -121,6 +136,7 @@
       text-transform: uppercase;
       font-weight: 600;
       margin-bottom: 12px;
+      color: #fff;
     }
 
     &-list {
@@ -131,7 +147,7 @@
         cursor: pointer;
 
         & p {
-          color: #545454;
+          color: #fff;
           font-style: normal;
           white-space: pre-wrap;
           line-height: 170%;
