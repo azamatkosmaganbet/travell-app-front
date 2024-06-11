@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { IUser } from "../models/IUser";
 import AuthService from "../services/AuthService";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { AuthResponse } from "../models/response/AuthResponse";
 import { toast } from "react-toastify";
 import { API_URL } from "../constants/api";
@@ -18,6 +18,9 @@ import { ICity, ICityData } from "../models/ICity";
 import { IReview, IReviewData } from "../models/IReview";
 import { IBlog } from "../models/IBlog";
 import BlogService from "../services/BlogService";
+import { IComment } from "../models/IComment";
+import $api from "../http";
+import { ISearch } from "../models/ISearch";
 
 export default class Store {
   user = {} as IUser;
@@ -31,6 +34,8 @@ export default class Store {
   bookings = [] as IBookingPost[];
   reviews = {} as IReviewData;
   blogs = [] as IBlog[];
+  comment = {} as IComment;
+  result = {} as ISearch;
   isAuth = false;
   isLoading = false;
 
@@ -40,6 +45,10 @@ export default class Store {
 
   setAuth(bool: boolean) {
     this.isAuth = bool;
+  }
+
+  setResult(result: ISearch) {
+    this.result = result;
   }
 
   setCalendarGuidesDefault() {
@@ -284,14 +293,13 @@ export default class Store {
       this.setLoading(false);
     }
   }
-  
 
   async createBlog(data: any) {
     try {
       this.setLoading(true);
-      console.log(data)
+      console.log(data);
       const formData = new FormData();
-      formData.append("author", data.author); 
+      formData.append("author", data.author);
       formData.append("content", data.content);
       formData.append("title", data.title);
 
@@ -299,7 +307,7 @@ export default class Store {
       data.images.forEach((image: any) => {
         formData.append(`files`, image);
       });
-      
+
       const response = await BlogService.createBlog(formData);
       this.getBlogs();
       toast.success("Вы успешо создали пост !");
@@ -401,6 +409,53 @@ export default class Store {
     }
   }
 
+  async fetchCommentById(id: string) {
+    try {
+      this.setLoading(true);
+
+      const response = await $api.get(`${API_URL}/comment/${id}`);
+      toast.success("Вы успешно создали город !");
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to create city");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+  async createComment(data: IComment) {
+    try {
+      this.setLoading(true);
+
+      const response = await axios.post(`${API_URL}/create/comment`, data, {
+        withCredentials: true,
+      });
+      this.getBlogs();
+      toast.success("Вы успешно добавили коммент!");
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to create city");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async deleteBLog(id: string, userId: string) {
+    try {
+      this.setLoading(true);
+      const response = await axios.delete(`${API_URL}/delete/blog/${id}`, {
+        data: { userId: userId },
+        withCredentials: true,
+      });
+      this.getBlogs();
+      toast.success("Вы успешно удалили свой пост!");
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to delete city");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
   async createGuideRequest(data: any) {
     try {
       this.setLoading(true);
@@ -438,6 +493,47 @@ export default class Store {
       this.setLoading(false);
     } finally {
       this.setLoading(false);
+    }
+  }
+
+  async likePost(id: string, userId: string) {
+    try {
+      this.setLoading(true);
+      const response = await axios
+       .post(`${API_URL}/like/${id}`, { userId: userId })
+       .then(() => {
+          this.getBlogs();
+        });
+    } catch (e: any) {
+      toast.error("Error");
+    }
+  }
+
+  async search(text: string) {
+    try {
+      this.setLoading(true);
+      const response = await TripService.fetchSearch(text);
+      this.setResult(response.data);
+      console.log(response.data);
+      
+    }
+    catch(e: any) {
+      toast.error("Что то пошло не так");
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async unlikePost(id: string, userId: string) {
+    try {
+      this.setLoading(true);
+      const response = await axios
+       .post(`${API_URL}/unlike`, { userId: userId, postId: id })
+       .then(() => {
+          this.getBlogs();
+        });
+    } catch (e: any) {
+      toast.error("Error");
     }
   }
 

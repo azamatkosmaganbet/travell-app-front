@@ -1,3 +1,4 @@
+import { IComment, ICommentData } from "./IComment";
 import { IUser } from "./IUser";
 
 export interface IBlog {
@@ -7,4 +8,6 @@ export interface IBlog {
     content: string;
     title: string;
     images: string[];
+    comments: ICommentData[];
+    likes: any[]
 }

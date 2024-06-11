@@ -1,14 +1,46 @@
 import "./Hero.scss";
 import { CiSearch } from "react-icons/ci";
 import HeroImage from "../../assets/test/hero.png";
+import { FloatingLabel, Form, Modal } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../..";
+import { debounce } from "lodash";
+import { FaLocationDot, FaUser } from "react-icons/fa6";
+import { ISearch } from "../../models/ISearch";
+import { observer } from "mobx-react-lite";
 const Hero = () => {
+  const [show, setShow] = useState(false);
+  const [text, setText] = useState("");
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [results, setResults] = useState<ISearch>();
+  const { store } = useContext(Context);
+
+  const debouncedSearch = debounce(async (searchText) => {
+    if (searchText) {
+      store.search(searchText);
+    }
+  }, 300);
+
+  useEffect(() => {
+    debouncedSearch(text);
+    // Очистка функции debounce при размонтировании компонента
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [text]);
+
+  console.log(results);
+
   return (
     <div className="hero">
       <div className="hero-wrapper">
         <picture className="hero-picture">
           <img
             alt="Найти турмейта"
-            src={"https://res.cloudinary.com/localie/image/upload/f_auto,w_1400,,dpr_1.0/v1593608071/content/landing/landingbg_mirrored.jpg"}
+            src={
+              "https://res.cloudinary.com/localie/image/upload/f_auto,w_1400,,dpr_1.0/v1593608071/content/landing/landingbg_mirrored.jpg"
+            }
           />
         </picture>
       </div>
@@ -20,7 +52,7 @@ const Hero = () => {
           <p className="hero-content-inner-desc">
             Локали покажут свои города так, будто вы приехали в гости к другу.
           </p>
-          <div className="hero-search">
+          <div onClick={handleShow}  className="hero-search">
             <div className="hero-search-content">
               <p>Куда отправимся сегодня?</p>
             </div>
@@ -37,59 +69,54 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header className="modal-header modal-res-header" closeButton>
+          <Modal.Body className="modal-review-body modal-res-body">
+            <form>
+              <FloatingLabel
+                controlId="floatingInput"
+                label="Страна, город или интересующая вас тема"
+                className="mb-3"
+              >
+                <Form.Control
+                  name="text"
+                  value={text}
+                  onChange={(e) => {
+                    setText(e.target.value);
+                  }}
+                  type="text"
+                  placeholder=""
+                />
+              </FloatingLabel>
+            </form>
+            <div>
+              <p></p>
+              <div className="res-list">
+                {store.result?.cities?.map((result, index) => (
+                  <a key={index} href={`city/${result._id}`}>
+                    <div className="res-loc">
+                      <FaLocationDot />
+                    </div>
+                    <p>{result.name}</p>
+                  </a>
+                ))}
+
+                {store.result?.guides?.map((result, index) => (
+                  <a href={`guide/${result._id}`} key={index}>
+                    <div className="res-loc">
+                      <FaUser />
+                    </div>
+                    <p>{result.name}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal.Header>
+      </Modal>
     </div>
   );
 };
 
-export default Hero;
-
-{
-  /* <section className="hero">
-      <div className="hero-picture">
-        <img src={BG} alt="Главная картинка" />
-      </div>
-      <div className="hero-content">
-        <Title variant="h1" className="hero-content-title">
-          Experience the pulse of the city through the eyes of a local expert.
-        </Title>
-        <span className="hero-content-desc">
-          Let GO Trip be your gateway to authentic adventures and unforgettable
-          memories.
-        </span>
-        <div className="hero-search">
-          <TextField placeholder="Where are you going?" variant="fill" />
-          <button className="hero-search__btn">
-            <svg
-              color="currentColor"
-              aria-hidden="true"
-              focusable="false"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-              viewBox="0 0 512 512"
-              className="sc-dkrGBB jkrsAl  css-1v0890g"
-              height="24"
-              width="24"
-            >
-              <path
-                d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-                fill="none"
-                stroke="currentColor"
-                stroke-miterlimit="10"
-                stroke-width="32"
-                className="sc-eDvShL dvWedH"
-              ></path>
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-                stroke-width="32"
-                d="M338.29 338.29L448 448"
-                className="sc-eDvShL dvWedH"
-              ></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </section> */
-}
+export default observer(Hero);

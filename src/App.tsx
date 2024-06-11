@@ -19,6 +19,7 @@ import MyTrips from "./pages/MyTrips/MyTrips";
 import EditTour from "./pages/EditTour/EditTour";
 import Calendar from "./pages/Calendar/Calendar";
 import Blogs from "./pages/Blogs/Blogs";
+import About from "./pages/About/About";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route element={<EditTour />} path="/tour/edit/:id" />
           <Route element={<Calendar />} path="/calendar" />
           <Route element={<Blogs />} path="/blogs" />
+          <Route element={<About />} path="/about" />
         </Route>
       </Routes>
     </BrowserRouter>

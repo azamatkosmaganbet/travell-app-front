@@ -4,17 +4,18 @@ import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
 import { Form, Modal, Spinner } from "react-bootstrap";
 import { FaCommentDots, FaHeart } from "react-icons/fa";
-import { GoShare } from "react-icons/go";
+import { MdDelete } from "react-icons/md";
 import { Context } from "../..";
 import { BASE_URL } from "../../constants/api";
+import { IComment } from "../../models/IComment";
 import "./Blogs.scss";
-import IterateUplaod from "../../components/IterateUpload/IterateUpload";
 
 const Blogs = () => {
   const { store } = useContext(Context);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [isLiked, setIsLiked] = useState<any>({});
 
   const [formData, setFormData] = useState({
     title: "",
@@ -25,7 +26,11 @@ const Blogs = () => {
     date: new Date(),
   });
 
-  console.log(formData)
+  const [comment, setComment] = useState<IComment>({
+    content: "",
+    author: store.user.id,
+    post: "",
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -37,36 +42,74 @@ const Blogs = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files!== null) {
+    if (files !== null) {
       setFormData({
-       ...formData,
+        ...formData,
         images: Array.from(files),
       });
     }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); 
-    console.log(formData)
+    e.preventDefault();
+    console.log(formData);
 
     store.createBlog(formData);
 
-    handleClose()
+    handleClose();
   };
 
   useEffect(() => {
     store.getBlogs();
+
   }, [store]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Получаем все блоги
+       
+
+        // Создаем объект isLiked с ключами блогов и всеми значениями false
+        const initialIsLiked: any = {};
+        store.blogs.forEach(blog => {
+          initialIsLiked[blog._id] = false;
+        });
+
+        setIsLiked(initialIsLiked);
+      } catch (error) {
+        console.error('Error fetching blogs:', error);
+      }
+    };
+
+    fetchData();
+  }, [store]);
+  console.log(isLiked);
+
+  const handleLikeClick = async (blog: any) => {
+    try {
+      // Проверяем, лайкнут ли пост
+      if (isLiked[blog._id]) {
+        await store.unlikePost(blog._id, store.user.id);
+        setIsLiked((prevState: any) => ({ ...prevState, [blog._id]: false }));
+      } else {
+        await store.likePost(blog._id, store.user.id);
+        setIsLiked((prevState: any) => ({ ...prevState, [blog._id]: true }));
+      }
+    } catch (error) {
+      console.error('Error toggling like:', error);
+    }
+  };
 
   useEffect(() => {
     if (store.user.id) {
-      setFormData(prevState => ({
+      setFormData((prevState) => ({
         ...prevState,
-        author: store.user.id
+        author: store.user.id,
       }));
     }
   }, [store.user.id]);
+  
 
   if (store.isLoading) {
     return (
@@ -75,6 +118,25 @@ const Blogs = () => {
       </div>
     );
   }
+
+  const deleteHandler = (id: string, userId: string) => {
+    const isConfirmed = window.confirm(
+      "Вы уверены, что хотите удалить этот пост?"
+    );
+    if (isConfirmed) {
+      store.deleteBLog(id, userId);
+    }
+  };
+
+  const createComment = (id: string) => {
+    let data = {
+      post: id,
+      author: store.user.id,
+      content: comment.content,
+    };
+
+    store.createComment(data);
+  };
 
   return (
     <div className="blogs">
@@ -127,24 +189,62 @@ const Blogs = () => {
                       <div className="b-card-footer">
                         <div className="b-card-footer-active">
                           <div className="b-card-footer-active-comment">
-                            <FaCommentDots />
+                            <FaCommentDots />{" "}
+                            <span>{blog.comments.length}</span>
                           </div>
 
                           <div className="b-card-footer-active-comment">
-                            <FaHeart /> <span>1</span>
+                            <FaHeart
+                              color={isLiked[blog._id] ? "red" : "gray"}
+                              onClick={() => {handleLikeClick(blog)}}
+                            />{" "}
+                            <span>{blog.likes.length}</span>
                           </div>
                         </div>
 
                         <div className="b-card-footer-share">
                           <div className="b-card-footer-share-in">
-                            <GoShare />
+                            {store.user.id === blog.author._id && (
+                              <MdDelete
+                                color="red"
+                                onClick={() => {
+                                  deleteHandler(blog._id, blog.author._id);
+                                }}
+                              />
+                            )}
                           </div>
                         </div>
                       </div>
 
                       <div className="b-card-comments">
                         <div className="b-card-comments-in">
-                          <form className="b-card-comments-in-form">
+                          {blog.comments &&
+                            blog.comments.map((comment) => (
+                              <div className="comments-user">
+                                <div className="comments-user-item">
+                                  <img
+                                    src={`${BASE_URL}/${comment.author.avatar}`}
+                                  />
+                                  <div className="comments-user-data">
+                                    <p>
+                                      {comment.author.name}{" "}
+                                      {comment.author.surname}
+                                    </p>
+                                    <div className="comments-user-data-content">
+                                      <p>
+                                        <span>{comment.content}</span>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          <form
+                            className="b-card-comments-in-form"
+                            onSubmit={() => {
+                              createComment(blog._id);
+                            }}
+                          >
                             <img src="https://lh3.googleusercontent.com/a/ACg8ocIH-5MVVUjcTg53L2V4hUxN7cKzxD88899Z0a7t_9v7=s96-c" />
                             <div className="b-card-comments-in-form-content">
                               <div className="b-card-comments-in-form-content-input">
@@ -152,6 +252,14 @@ const Blogs = () => {
                                   placeholder="Here is a sample placeholder"
                                   focusBorderColor="#FF4433"
                                   border="none"
+                                  name="comment"
+                                  onChange={(e) => {
+                                    setComment({
+                                      ...comment,
+                                      content: e.target.value,
+                                    });
+                                  }}
+                                  value={comment.content}
                                 />
                               </div>
                             </div>
@@ -181,7 +289,6 @@ const Blogs = () => {
                 <Form.Label>
                   <h6>
                     <b>О чем ваша история?</b>
-                    
                   </h6>
                 </Form.Label>
                 <Form.Control
@@ -223,9 +330,12 @@ const Blogs = () => {
                     <b>Добавьте фотографии</b>
                   </h6>
                 </Form.Label>
-                <Form.Control type="file" multiple onChange={handleFileChange}/>
+                <Form.Control
+                  type="file"
+                  multiple
+                  onChange={handleFileChange}
+                />
               </Form.Group>
-
 
               <Button
                 type="submit"

@@ -1,0 +1,493 @@
+@import "../../styles/mixins";
+
+.about-us {
+  padding-top: 64px;
+  min-height: calc(var(9.45px, 1vh) * 100);
+  width: 100%;
+  position: relative;
+  transition: filter 0.2s ease-in 0s;
+
+  &-main {
+    padding-top: 13px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include _744 {
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 2.5rem;
+    }
+  }
+}
+
+.about-us-header {
+  display: flex;
+  background: #f6f6f6;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  &-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 960px;
+    justify-content: center;
+    flex-flow: column wrap;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    @include _744 {
+      max-width: 100%;
+      width: 100%;
+      justify-content: center;
+      flex-flow: column wrap;
+      padding-right: 20px;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      -webkit-box-align: center;
+      align-items: center;
+    }
+
+    & h2 {
+      text-align: left;
+      font-size: 60px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      max-width: 520px;
+      font-weight: 900;
+      line-height: 1.2;
+      width: 100%;
+
+      @include _744 {
+        text-align: center;
+        width: 100%;
+        max-width: none;
+        font-size: 32px;
+      }
+    }
+
+    & p {
+      margin-bottom: 0px;
+      text-align: left;
+      max-width: 340px;
+
+      @include _744 {
+        margin-bottom: 56px;
+        width: 100%;
+        text-align: center;
+        max-width: none;
+      }
+    }
+  }
+}
+
+.about-wrapper {
+  padding-bottom: 98px;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-inline: 0px;
+  display: flex;
+  max-width: 960px;
+  width: 100%;
+  justify-content: center;
+  flex-flow: wrap;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @include _744 {
+    display: flex;
+    padding-bottom: 13px;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-inline-start: 1.25rem;
+    padding-inline-end: 1.25rem;
+    max-width: 100%;
+    width: 100%;
+    justify-content: center;
+    flex-flow: wrap;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  &-right {
+    display: flex;
+    width: 33.3333%;
+    flex-direction: column;
+
+    @include _744 {
+      display: none;
+    }
+
+    &-team {
+      display: flex;
+      background-repeat: no-repeat;
+      background-position: 50% 0%;
+      background-size: cover;
+      background-image: url("https://res.cloudinary.com/localie/image/upload/v1661257526/other/nick-tours-xs.jpg");
+      border-radius: 32px;
+      width: 100%;
+      min-height: 412px;
+      margin-bottom: 24px;
+
+      @include _744 {
+        margin-bottom: -64px;
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        background-size: cover;
+        min-width: 294px;
+        min-height: 260px;
+      }
+    }
+
+    & h5 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+    }
+
+    & a {
+      margin-bottom: 12px;
+
+      & p {
+        white-space: pre-line;
+        color: #ff5b5b;
+      }
+    }
+
+    &-links {
+      display: flex;
+      margin-bottom: 1.25rem;
+
+      & a {
+        margin-right: 24px;
+
+        & svg {
+          color: currentcolor;
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+
+    &-p {
+      margin-bottom: 20px;
+      white-space: pre-line;
+    }
+  }
+
+  &-left {
+    width: 66.6667%;
+    padding-right: 2.5rem;
+    padding-top: 96px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+
+    @include _744 {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-right: 0px;
+      padding-top: 0px;
+    }
+
+    &-team {
+      display: flex;
+      min-width: 383px;
+      min-height: 433px;
+      margin-bottom: -90px;
+      background-repeat: no-repeat;
+      background-position: 50% 0%;
+      background-size: cover;
+      border-radius: 32px;
+      background-image: url("https://res.cloudinary.com/localie/image/upload/v1661257259/other/the-localie-team.jpg");
+
+      @include _744 {
+        margin-bottom: -64px;
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        background-size: cover;
+        min-width: 294px;
+        min-height: 260px;
+      }
+    }
+
+    &-desc {
+      padding-inline-start: 2rem;
+      padding-inline-end: 2rem;
+      margin-inline: 45px;
+      padding-top: 1.75rem;
+      padding-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      border-radius: 32px;
+      background: #fff;
+
+      @include _744 {
+        display: flex;
+        flex-direction: column;
+        padding-inline-end: 1.25rem;
+        padding-inline-start: 1.25em;
+        margin-inline-start: 1.25rem;
+        margin-inline-end: 1.25rem;
+        padding-top: 1.25rem;
+        padding-bottom: 2rem;
+      }
+
+      &-title {
+        font-size: 16px;
+        line-height: 1;
+        margin-bottom: 1.25em;
+        font-weight: 700;
+
+        @include _744 {
+          font-size: 14px;
+        }
+      }
+
+      &-sub {
+        font-size: 28px;
+        line-height: 2.25rem;
+        font-weight: bold;
+
+        @include _744 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.about-us-title {
+  margin-bottom: 50px;
+  font-size: 28px;
+  font-weight: 700;
+
+  @include _744 {
+    margin-bottom: 2rem;
+  }
+}
+
+.about-us-text {
+  max-width: 960px;
+  margin-bottom: 2rem;
+}
+
+.about-us-author {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 960px;
+
+  &-text {
+    flex-direction: row;
+    padding-inline: 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 960px;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e2e2;
+
+    @include _744 {
+      flex-direction: row;
+      padding-inline: 0px;
+    }
+
+    &-image {
+      margin-right: 1rem;
+      display: flex;
+      margin-bottom: 1rem;
+      background-repeat: no-repeat;
+      background-image: url("../../assets/test/maria.png");
+      background-position: 50% 0%;
+      background-size: cover;
+      border-radius: 100%;
+      border: 1px solid #e2e2e2;
+      height: 64px;
+      width: 64px;
+    }
+
+    &-desc {
+      display: flex;
+      flex-direction: column;
+      -webkit-box-align: center;
+      align-items: flex-start;
+
+      &-name {
+        margin-bottom: 1rem;
+        color: #545454;
+      }
+
+      &-role {
+        text-transform: uppercase;
+        color: #545454;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.about-us-happy {
+  width: 100%;
+  margin-top: 50px;
+
+  & h3 {
+    font-weight: 700;
+    font-size: 40px;
+
+    @include _744 {
+      font-size: 28px;
+    }
+
+    & span {
+      color: #fb6542;
+    }
+  }
+}
+
+.about-us-our-team {
+  display: flex;
+  padding-inline-start: 1.25rem;
+  padding-inline-end: 1.25rem;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  padding-right: 20px;
+  padding-left: 20px;
+  max-width: 960px;
+
+  @include _744 {
+    max-width: 100%;
+
+  }
+  & h3 {
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 80px;
+    font-size: 24px;
+  }
+
+  &-members {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2.5rem;
+    overflow-x: inherit;
+    
+    @include _744 {
+      overflow-x: scroll;
+      display: flex;
+      width: 100%;
+    }
+
+    &-card {
+      margin-bottom: 80px;
+      display: flex;
+      margin-right: 1rem;
+      flex-direction: column;
+      min-width: auto;
+
+      @include _744 {
+        margin-bottom: 0px;
+        min-width: auto;
+      }
+
+      &-avatar {
+        display: flex;
+        margin-bottom: 0.75rem;
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        background-size: cover;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 50px;
+        width: 214px;
+        height: 254px;
+      }
+
+      &-city {
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        color: #545454;
+        font-weight: 300;
+        font-size: 12px;
+      }
+
+      &-title {
+        font-weight: 900;
+        font-size: 20px;
+      }
+
+      &-p {
+        color: #ff5b5b;
+      }
+    }
+  }
+}
+
+.avatar-1 {
+  background-image: url("../../assets/test/MairaLarge.png");
+}
+
+.avatar-2 {
+  background-image: url("../../assets/test/Sena.png");
+}
+
+.avatar-3 {
+  background-image: url("../../assets/test/Azamat.png");
+}
+
+.about-join {
+  padding-bottom: 120px;
+  display: flex;
+  padding-inline-start: 1.25rem;
+  padding-inline-end: 1.25rem;
+  flex-direction: column;
+  width: 100%;
+  max-width: 960px;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  & h3 {
+    border-bottom: 4px solid rgb(255, 102, 102);
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+
+    @include _744 {
+      text-align: center;
+      font-size: 28px;
+      border-bottom: none;
+
+    }
+  }
+
+  & p {
+    text-align: center;
+    max-width: 762px;
+    @include _744 {
+      font-size: 14px;
+    }
+  }
+}

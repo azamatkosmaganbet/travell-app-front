@@ -1,12 +1,11 @@
 import { observer } from "mobx-react-lite";
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import {
-  ChangeEvent,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { FaCity, FaClipboardList, FaTripadvisor, FaUserCircle } from "react-icons/fa";
+  FaCity,
+  FaClipboardList,
+  FaTripadvisor,
+  FaUserCircle,
+} from "react-icons/fa";
 import { MdOutlineTour } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { Context } from "../..";
@@ -39,7 +38,6 @@ const Account = () => {
       store.changeAvatar(id, file);
     }
   };
-
 
   return (
     <section className="main section">
@@ -130,7 +128,12 @@ const Account = () => {
               icon={<FaTripadvisor className="account-icon" color="#375E97" />}
             />
 
-            <InfoCard tag="Мои трипы" type="solo" title="Мои трипы" url={`/my-trips/${id}`} />
+            <InfoCard
+              tag="Мои трипы"
+              type="solo"
+              title="Мои трипы"
+              url={`/my-trips/${id}`}
+            />
 
             <div className="profile-cards">
               <InfoCard
@@ -148,16 +151,14 @@ const Account = () => {
                   <FaClipboardList className="account-icon" color="#375E97" />
                 }
               />
-              <InfoCard type="combined" tag="About us" />
-              <InfoCard type="combined" tag="Review" />
-              <InfoCard
-                type="combined"
-                tag="Delete my personal data"
-                color="red"
-              />
+              <InfoCard url="/about" type="combined" tag="О нас" />
+              <InfoCard type="combined" tag="Блог" url="/blogs" />
+              <InfoCard type="combined" tag="Удалить мои данные" color="red" />
             </div>
 
-            <InfoCard color="red" tag="Log out" type="solo" title="Log out" />
+            <div onClick={() => {store.logout()}}>
+              <InfoCard color="red" tag="Log out" type="solo" title="Выйти" />
+            </div>
           </div>
         </div>
       </div>

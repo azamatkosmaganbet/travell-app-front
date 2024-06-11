@@ -1,12 +1,19 @@
 import { AxiosResponse } from "axios";
 import $api from "../http";
 import { ITrip } from "../models/ITrip";
+import { ISearch } from "../models/ISearch";
 
 export default class TripService {
   static fetchTripsByGuideId(id: string): Promise<AxiosResponse<ITrip[]>> {
     // Передача параметра role в запросе, если он предоставлен
 
     return $api.get<ITrip[]>(`/guide/trip/${id}`);
+  }
+
+  static fetchSearch(text: string): Promise<AxiosResponse<ISearch>> {
+    // Передача параметра role в запросе, если он предоставлен
+
+    return $api.get<ISearch>(`/search?q=${encodeURIComponent(text)}`);
   }
 
   static fetchTripById(id: string): Promise<AxiosResponse<ITrip>> {

@@ -1,20 +1,20 @@
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
-import { BsBasket3 } from "react-icons/bs";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Context } from "../..";
-import { ReactComponent as Chat } from "../../assets/icons/chat.svg";
-import { ReactComponent as Home } from "../../assets/icons/home.svg";
-import { ReactComponent as MbHome } from "../../assets/icons/home.svg";
-import { ReactComponent as News } from "../../assets/icons/news.svg";
-import { ReactComponent as Search } from "../../assets/icons/search.svg";
-import { ReactComponent as Trip } from "../../assets/icons/trip.svg";
-import { ReactComponent as Logo } from "../../assets/icons/mb-logo.svg";
-import { BASE_URL } from "../../constants/api";
-import "./Header.scss";
+import { AiOutlineTeam } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
+import { IoCalendarNumber } from "react-icons/io5";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Context } from "../..";
+import { ReactComponent as Home, ReactComponent as MbHome } from "../../assets/icons/home.svg";
+import { ReactComponent as Logo } from "../../assets/icons/mb-logo.svg";
+import { ReactComponent as News } from "../../assets/icons/news.svg";
+import { LuNewspaper } from "react-icons/lu";
+import { ReactComponent as Search } from "../../assets/icons/search.svg";
+import { ReactComponent as Trip } from "../../assets/icons/trip.svg";
+import { BASE_URL } from "../../constants/api";
+import "./Header.scss";
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -130,8 +130,8 @@ const Header = () => {
             </div>
 
             <div className="header-left-icon">
-              <button className="header-left-icon-btn">
-                <Chat
+              <a href="/about" className="header-left-icon-btn">
+                <AiOutlineTeam
                   style={{
                     color:
                       (!isHomePage && !isTourPage) || opacity > 0
@@ -139,17 +139,17 @@ const Header = () => {
                         : "hsl(0deg 0% 100%)",
                   }}
                 />
-              </button>
-
-              <a href="/" className="header-left-icon-mb-btn">
-                <Chat />
               </a>
-              <p>Главная</p>
+
+              <a href="/about" className="header-left-icon-mb-btn">
+                <AiOutlineTeam />
+              </a>
+              <p>О нас</p>
             </div>
 
             <div className="header-left-icon">
-              <button className="header-left-icon-btn">
-                <BsBasket3
+              <a href="/calendar" className="header-left-icon-btn">
+              <IoCalendarNumber
                   style={{
                     color:
                       (!isHomePage && !isTourPage) || opacity > 0
@@ -157,17 +157,17 @@ const Header = () => {
                         : "hsl(0deg 0% 100%)",
                   }}
                 />
-              </button>
-
-              <a href="/" className="header-left-icon-mb-btn">
-                <BsBasket3 />
               </a>
-              <p>Главная</p>
+
+              <a href="/calendar" className="header-left-icon-mb-btn">
+              <IoCalendarNumber />
+              </a>
+              <p>Календарь</p>
             </div>
 
             <div className="header-left-icon">
-              <button className="header-left-icon-btn">
-                <Trip
+              <a href="/blog" className="header-left-icon-btn">
+                <LuNewspaper 
                   style={{
                     color:
                       (!isHomePage && !isTourPage) || opacity > 0
@@ -175,10 +175,10 @@ const Header = () => {
                         : "hsl(0deg 0% 100%)",
                   }}
                 />
-              </button>
+              </a>
 
-              <a href="/" className="header-left-icon-mb-btn">
-                <Trip />
+              <a href="/blogs" className="header-left-icon-mb-btn">
+              <LuNewspaper />
               </a>
               <p>Главная</p>
             </div>
