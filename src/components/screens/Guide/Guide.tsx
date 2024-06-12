@@ -164,7 +164,7 @@ const Guide = () => {
           </div>
           {selectedItem === "1" && <About guide={store.guide} />}
 
-          {selectedItem === "2" && <Trip trips={store.trips} />}
+          {selectedItem === "2" && <Trip trips={store.trips} />} 
 
           {selectedItem === "4" && <Review reviews={store.reviews}/>}
 

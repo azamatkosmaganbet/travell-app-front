@@ -14,4 +14,8 @@ export default class BlogService {
   static getBlogs() {
     return $api.get(`/blogs`);
   }
+
+  static getBlogByUser(id: string) {
+    return $api.get(`/post/${id}`);
+  }
 }

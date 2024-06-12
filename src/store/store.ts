@@ -34,6 +34,7 @@ export default class Store {
   bookings = [] as IBookingPost[];
   reviews = {} as IReviewData;
   blogs = [] as IBlog[];
+  post = [] as IBlog[];
   comment = {} as IComment;
   result = {} as ISearch;
   isAuth = false;
@@ -57,6 +58,10 @@ export default class Store {
 
   setBlogs(blogs: IBlog[]) {
     this.blogs = blogs;
+  }
+
+  setPost(post: IBlog[]) {
+    this.post = post;
   }
 
   setBooking(booking: IBookingPost[]) {
@@ -274,6 +279,20 @@ export default class Store {
       const response = await TripService.fetchTripById(id);
 
       this.setTrip(response.data);
+    } catch (e: any) {
+      toast.error("Ошибка при получении Трипа");
+      this.setLoading(false);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  async getPostById(id: string) {
+    try {
+      this.setLoading(true);
+      const response = await BlogService.getBlogByUser(id);
+
+      this.setPost(response.data)
     } catch (e: any) {
       toast.error("Ошибка при получении Трипа");
       this.setLoading(false);

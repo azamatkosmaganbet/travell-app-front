@@ -166,7 +166,7 @@ const Header = () => {
             </div>
 
             <div className="header-left-icon">
-              <a href="/blog" className="header-left-icon-btn">
+              <a href="/blogs" className="header-left-icon-btn">
                 <LuNewspaper 
                   style={{
                     color:
