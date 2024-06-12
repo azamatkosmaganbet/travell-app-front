@@ -250,7 +250,7 @@
   min-width: 2.5rem;
   font-size: 16px;
   padding-inline: 24px;
-  background: #009999;
+  background: #FB6542;
   color: #fff;
   padding: 12px !important;
   margin-left: -48px !important;
@@ -265,6 +265,7 @@
 }
 
 .btn-search {
+  background: #FB6542 !important;
   @include _744 {
     display: none !important;
   }
