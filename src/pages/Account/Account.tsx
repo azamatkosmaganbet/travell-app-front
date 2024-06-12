@@ -12,6 +12,7 @@ import { Context } from "../..";
 import InfoCard from "../../components/InfoCard/InfoCard";
 import { Title } from "../../components/UI/Title/Title";
 import "./Account.scss";
+import { API_URL } from "../../constants/api";
 const Account = () => {
   const { store } = useContext(Context);
   const fileInputRef = useRef(null);
@@ -70,7 +71,7 @@ const Account = () => {
                   ) : store.user.avatar ? (
                     <img
                       alt=""
-                      src={`http://localhost:5000/${store.user.avatar}`}
+                      src={`${API_URL}/${store.user.avatar}`}
                     />
                   ) : (
                     <span className="default-user-avatar">

@@ -85,10 +85,10 @@ export const CardItem: FC<PropsWithChildren<ICardItem>> = ({
 
           <div className="description-faq-actions">
             <Button className="btn btn-lg btn-dark me-4 w-100">
-              Написать локали
+              Написать путеводителю
             </Button>
             <Button className="btn btn-lg btn-light w-100 btn-outline-success">
-              Больше о локали
+              Больше о Go Trip
             </Button>
           </div>
         </>

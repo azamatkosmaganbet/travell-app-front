@@ -8,7 +8,7 @@ const LocalieBecome = () => {
     <div className="localie-become">
       <Container>
         <h2>
-          Станьте локали — экспертом в своем городе. <br /> Общайтесь с другими,
+          Станьте путеводителем — экспертом в своем городе. <br /> Общайтесь с другими,
           вдохновляйте, помогайте, <br /> зарабатывайте
         </h2>
         <div className="localie-become-cards">

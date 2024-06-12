@@ -40,7 +40,7 @@ const CityPage = () => {
                     </p>
                     <div className="city-tourmate-card-btn">
                       <div className="city-tourmate-card-btn-inner">
-                        <button>Связаться с локали</button>
+                        <button>Связаться с путеводителем</button>
                       </div>
                     </div>
                   </div>

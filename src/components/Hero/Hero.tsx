@@ -50,7 +50,7 @@ const Hero = () => {
             Открывайте новые города <br /> с местными жителями.
           </h1>
           <p className="hero-content-inner-desc">
-            Локали покажут свои города так, будто вы приехали в гости к другу.
+            Путеводитель покажут свои города так, будто вы приехали в гости к другу.
           </p>
           <div onClick={handleShow}  className="hero-search">
             <div className="hero-search-content">
@@ -60,7 +60,7 @@ const Hero = () => {
               <span>
                 <CiSearch />
               </span>
-              Найти локали
+              Найти Путеводителя
             </button>
 
             <button className="mb-btn-search">

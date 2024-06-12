@@ -73,7 +73,7 @@ const Guide = () => {
                     {store.guide?.description}
                   </p>
                   <p className="guide-profile-info__date">
-                    На Локали с{" "}
+                    На Go Trip с{" "}
                     {new Date(store.guide.userId?.registerDate).toLocaleString(
                       "ru-RU",
                       { month: "long" }
@@ -108,7 +108,7 @@ const Guide = () => {
                 </div>
 
                 <Button className="bg-orange border-0">
-                  Cвязаться с локали
+                  Cвязаться с Go Trip
                 </Button>
               </div>
             </div>
@@ -178,15 +178,15 @@ const Guide = () => {
                 </Title>
 
                 <div className="guide-info-content-card-desc">
-                  <p>230 путешественников гуляли с этим локали 🙌</p>
+                  <p>230 путешественников гуляли с этим Go Trip 🙌</p>
                 </div>
 
                 <div className="guide-info-content-card-btns">
                   <a className="guide-info-content-card-btns-link mb-btn">
-                    Локали в Стамбул
+                    Go Trip в Стамбул
                   </a>
                   <a className="guide-info-content-card-btns-link link-2">
-                    Локали в Стамбул
+                    Go Trip в Стамбул
                   </a>
                 </div>
               </Card>

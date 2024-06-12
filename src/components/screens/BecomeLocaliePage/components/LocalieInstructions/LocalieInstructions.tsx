@@ -5,13 +5,13 @@ const LocalieInstructions = () => {
     <div className="instructions">
       <div className="instructions-content">
         <div className="instructions-text">
-          <h2>Что делать, если я хочу стать локали?</h2>
+          <h2>Что делать, если я хочу стать путеводителем?</h2>
           <div className="instructions-info">
             <div className="instructions-info-step">
               <span>1</span>
               <h6>Оставьте заявку</h6>
               <p>
-                Обязательно добавьте ссылки на свои соцсети и контакты локали,
+                Обязательно добавьте ссылки на свои соцсети и контакты путеводителя,
                 если решили присоединиться к нам по рекомендации участника
                 сообщества.{" "}
               </p>
@@ -39,9 +39,9 @@ const LocalieInstructions = () => {
 
             <div className="instructions-info-step">
               <span>4</span>
-              <h6>Вы локали!</h6>
+              <h6>Вы путеводитель!</h6>
               <p>
-                Если вы прошли интервью, то сразу получите доступ к Локали.
+                Если вы прошли интервью, то сразу получите доступ к путеводитель.
                 Заполните профиль, опубликуйте и, вуаля, вы — один из нас!{" "}
               </p>
             </div>

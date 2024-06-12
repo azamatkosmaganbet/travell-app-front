@@ -41,7 +41,7 @@ const Login: FC = () => {
             <p>Вход или регистрация</p>
           </div>
           <div className="login-bottom">
-            <p>Добро пожаловать в Локали</p>
+            <p>Добро пожаловать в Go Trip</p>
             <form className="login-form" onSubmit={submitHandler}>
               <Form.Group
                 className="mb-3 mt-3"

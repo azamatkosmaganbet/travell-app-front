@@ -12,7 +12,7 @@ const Footer = () => {
             <img src={Text} />
           </div>
           <h4>
-            Локали делает каждое путешествие проще, дешевле и еще более
+            Путеводитель делает каждое путешествие проще, дешевле и еще более
             захватывающим.
           </h4>
         </div>
@@ -28,7 +28,7 @@ const Footer = () => {
 
               <li>
                 <div className="footer-center-menu-list-item">
-                  <p>Стать Локали</p>
+                  <p>Стать Путеводитель</p>
                 </div>
               </li>
 
@@ -58,7 +58,7 @@ const Footer = () => {
 
               <li>
                 <div className="footer-center-menu-list-item">
-                  <p>Стать Локали</p>
+                  <p>Стать Путеводитель</p>
                 </div>
               </li>
 
@@ -81,7 +81,7 @@ const Footer = () => {
 
               <li>
                 <div className="footer-center-menu-list-item">
-                  <p>Стать Локали</p>
+                  <p>Стать Путеводитель</p>
                 </div>
               </li>
 
@@ -116,7 +116,7 @@ const Footer = () => {
 
               <li>
                 <div className="footer-center-menu-list-item">
-                  <p>Стать Локали</p>
+                  <p>Стать Путеводитель</p>
                 </div>
               </li>
 

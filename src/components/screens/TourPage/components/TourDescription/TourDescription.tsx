@@ -56,13 +56,13 @@ const TourDescription: FC<ITour> = ({ tour, isLoading }) => {
                 </div> */}
 
                 <div className="description-faq-actions">
-                  <button className="">Написать локали</button>
+                  <button className="">Написать путеводитель</button>
                   <a
                     onClick={() => {
                       navigate(`/guide/${tour.guide._id}`);
                     }}
                   >
-                    Больше о локали
+                    Больше о путеводителе
                   </a>
                 </div>
               </Card>
@@ -72,10 +72,10 @@ const TourDescription: FC<ITour> = ({ tour, isLoading }) => {
                 type="info"
                 color="#FFD500"
               >
-                <h3>Кто такие локали?</h3>
+                <h3>Кто такие путеводитель?</h3>
                 <div className="description-faq-user">
                   <p>
-                    Локали — местные жители с разными интересами и хобби,
+                    Путеводители — местные жители с разными интересами и хобби,
                     живущие по всему миру. Они влюблены в свои города и готовы
                     разделить эту любовь с вами ❤️
                   </p>

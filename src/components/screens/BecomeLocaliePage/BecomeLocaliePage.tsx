@@ -20,7 +20,7 @@ const BecomeLocaliePage = () => {
           <div className="about-container">
             <div className="about-container-content">
               <h1>
-                Локали — это сообщество. <br /> Социальная сеть для экспатов{" "}
+                Go Trip — это сообщество. <br /> Социальная сеть для экспатов{" "}
                 <br /> и страстных путешественников
               </h1>
               <p>
@@ -30,7 +30,7 @@ const BecomeLocaliePage = () => {
                 помогаем учить иностранные языки и вместе замечательно проводим
                 время в нашем сообществе.
               </p>
-              <Link to="/account/application">Стать Локали</Link>
+              <Link to="/account/application">Стать Путеводителем</Link>
             </div>
           </div>
         </div>
