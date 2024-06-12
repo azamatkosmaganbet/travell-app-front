@@ -12,6 +12,7 @@ import Trip from "./components/Trip/Trip";
 import About from "./components/About/About";
 import GuidePrice from "../../GuidePrice/GuidePrice";
 import Review from "../../Review/Review";
+import { FaHeart } from "react-icons/fa";
 const Guide = () => {
   const { store } = useContext(Context);
   const { id } = useParams();
@@ -24,13 +25,19 @@ const Guide = () => {
   useEffect(() => {
     if (id) {
       store.getGuideById(id);
-
+      store.getPostById(id);
       store.getTripsByGuideId(id);
     }
   }, [id, store]);
 
   useEffect(() => {
     if (store.guide._id) {
+      store.getReviewById(store.guide._id);
+    }
+  }, [store, store.guide._id]);
+
+  useEffect(() => {
+    if (store.user._id) {
       store.getReviewById(store.guide._id);
     }
   }, [store, store.guide._id]);
@@ -165,6 +172,43 @@ const Guide = () => {
           {selectedItem === "1" && <About guide={store.guide} />}
 
           {selectedItem === "2" && <Trip trips={store.trips} />} 
+
+          {selectedItem === "3" && <div className="post-by-user">
+                <div className="b-inner">
+                  {store.post.map((blog) => (
+                    <div className="b-card">
+                      <div className="b-card-header">
+                        <div className="b-card-header-content">
+                          <img src={`${BASE_URL}/${blog.author.avatar}`} />
+                          <div className="b-card-header-content-info">
+                            <div className="b-card-header-content-info-title">
+                              <p>
+                                {blog.author.name} {blog.author.surname}
+                              </p>
+                            </div>
+                            <div className="b-card-header-content-info-desc">
+                              <p>{new Date(blog.date).toLocaleDateString()}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="b-card-content">
+                        <p className="b-card-content-title">{blog.title}</p>
+                        <p className="b-card-content-desc">{blog.content}</p>
+                      </div>
+
+                      <div className="b-card-body">
+                        {blog.images.map((image) => (
+                          <div className="b-card-body-image">
+                            <img src={`${BASE_URL}${image}`} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>} 
 
           {selectedItem === "4" && <Review reviews={store.reviews}/>}
 

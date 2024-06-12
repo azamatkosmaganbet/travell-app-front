@@ -337,7 +337,7 @@
         position: absolute;
         right: calc(10% - 10px);
         bottom: 0px;
-        background: #375E97;
+        background: #375e97;
         height: 5px;
         width: 90%;
         border-radius: 32px;
@@ -351,21 +351,19 @@
         font-weight: 700;
         font-size: 24px;
         line-height: 43px;
-        color: #375E97;
+        color: #375e97;
       }
     }
   }
 }
 
 .li-secondary {
-  color: #9BAFCB;
+  color: #9bafcb;
 
   &:hover {
     color: #000;
   }
 }
-
-
 
 .guide-info {
   background-image: url("https://res.cloudinary.com/localie/image/upload/f_auto,w_1920,,/v1655300963/destinations/tr-istanbul2.jpg");
@@ -527,4 +525,15 @@
 .link-2 {
   background: #ff5b5b;
   color: #fff;
+}
+
+.post-by-user {
+  flex-flow: wrap;
+  align-items: stretch;
+  padding-inline: 0px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1062px;
+  margin: 0 auto;
 }
