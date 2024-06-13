@@ -61,7 +61,7 @@ const TourmateCard: FC<TourmateCardProps> = ({
         <Link className="location-card" to={`/city/${(tourmate as ICity)._id}`}>
           <div className="location-content">
             <div className="location-content-inner">
-              <img src={(tourmate as ICity).image ? `${BASE_URL}/trips/${(tourmate as ICity).image}` : "https://cdn.pixabay.com/photo/2016/11/22/19/17/buildings-1850129_640.jpgp"} />
+              <img src={(tourmate as ICity).image ? `${BASE_URL}/trips/${(tourmate as ICity).image}` : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNeIzw-6NQN0XcZENyLXS1aZJ0KKnSR2TJ0ATeb0kpdupKZiuUx56zMFTrX1HJ7-198a4&usqp=CAU"} />
               <h2>{(tourmate as ICity).name}</h2>
             </div>
           </div>
