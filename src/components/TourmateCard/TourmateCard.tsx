@@ -25,9 +25,13 @@ const TourmateCard: FC<TourmateCardProps> = ({
           <div className="tourmate-card-inner">
             <div className="tourmate-card-inner-container">
               <img
-                src={`${BASE_URL}/${(tourmate as IGuide).userId?.avatar}`}
+                src={
+                  (tourmate as IGuide).userId?.avatar
+                    ? `${BASE_URL}/${(tourmate as IGuide).userId?.avatar}`
+                    : "https://t3.ftcdn.net/jpg/03/58/90/78/360_F_358907879_Vdu96gF4XVhjCZxN2kCG0THTsSQi8IhT.jpg"
+                }
                 alt={(tourmate as IGuide).userId?.name}
-              />
+              /> 
               <div className="tourmate-card-inner-container-bottom">
                 <div className="tourmate-card-inner-container-bottom-p">
                   <div className="tourmate-card-inner-container-bottom-p-content">
@@ -57,7 +61,7 @@ const TourmateCard: FC<TourmateCardProps> = ({
         <Link className="location-card" to={`/city/${(tourmate as ICity)._id}`}>
           <div className="location-content">
             <div className="location-content-inner">
-              <img src={`${BASE_URL}/trips/${(tourmate as ICity).image}`} />
+              <img src={(tourmate as ICity).image ? `${BASE_URL}/trips/${(tourmate as ICity).image}` : "https://cdn.pixabay.com/photo/2016/11/22/19/17/buildings-1850129_640.jpgp"} />
               <h2>{(tourmate as ICity).name}</h2>
             </div>
           </div>

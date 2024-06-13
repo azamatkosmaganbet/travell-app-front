@@ -12,7 +12,7 @@ import { Context } from "../..";
 import InfoCard from "../../components/InfoCard/InfoCard";
 import { Title } from "../../components/UI/Title/Title";
 import "./Account.scss";
-import { API_URL } from "../../constants/api";
+import { API_URL, BASE_URL } from "../../constants/api";
 const Account = () => {
   const { store } = useContext(Context);
   const fileInputRef = useRef(null);
@@ -69,10 +69,7 @@ const Account = () => {
                       <rect width="100%" height="100%" fill="#868e96"></rect>
                     </svg>
                   ) : store.user.avatar ? (
-                    <img
-                      alt=""
-                      src={`${API_URL}/${store.user.avatar}`}
-                    />
+                    <img alt="" src={`${BASE_URL}/${store.user.avatar}`} />
                   ) : (
                     <span className="default-user-avatar">
                       <FaUserCircle />
@@ -114,20 +111,26 @@ const Account = () => {
           </div>
 
           <div className="profile-info">
-            <InfoCard
-              tag="Стать Гидом"
-              type="solo"
-              url="/info/become-localie"
-              icon={<MdOutlineTour className="account-icon" color="#375E97" />}
-            />
-
-            <InfoCard
-              tag="Создать Трип"
-              type="solo"
-              title="Создать Трип"
-              url="/create/trip"
-              icon={<FaTripadvisor className="account-icon" color="#375E97" />}
-            />
+            {store.user.role === "guide" ? (
+              <InfoCard
+                tag="Создать Трип"
+                type="solo"
+                title="Создать Трип"
+                url="/create/trip"
+                icon={
+                  <FaTripadvisor className="account-icon" color="#375E97" />
+                }
+              />
+            ) : (
+              <InfoCard
+                tag="Стать Гидом"
+                type="solo"
+                url="/info/become-localie"
+                icon={
+                  <MdOutlineTour className="account-icon" color="#375E97" />
+                }
+              />
+            )}
 
             <InfoCard
               tag="Мои трипы"
@@ -137,27 +140,36 @@ const Account = () => {
             />
 
             <div className="profile-cards">
-              <InfoCard
-                type="combined"
-                title="Information"
-                tag="Создать город"
-                url="/create/city"
-                icon={<FaCity className="account-icon" color="#375E97" />}
-              />
-              <InfoCard
-                type="combined"
-                tag="Список гидов"
-                url="/guide/list"
-                icon={
-                  <FaClipboardList className="account-icon" color="#375E97" />
-                }
-              />
+              {store.user.role === "guide" && (
+                <InfoCard
+                  type="combined"
+                  title="Information"
+                  tag="Создать город"
+                  url="/create/city"
+                  icon={<FaCity className="account-icon" color="#375E97" />}
+                />
+              )}
+              {store.user.role === "guide" && (
+                <InfoCard
+                  type="combined"
+                  tag="Список гидов"
+                  url="/guide/list"
+                  icon={
+                    <FaClipboardList className="account-icon" color="#375E97" />
+                  }
+                />
+              )}
               <InfoCard url="/about" type="combined" tag="О нас" />
               <InfoCard type="combined" tag="Блог" url="/blogs" />
               <InfoCard type="combined" tag="Удалить мои данные" color="red" />
             </div>
 
-            <div onClick={() => {store.logout()}}>
+            <div
+              onClick={() => {
+                store.logout();
+                localStorage.removeItem("token");
+              }}
+            >
               <InfoCard color="red" tag="Log out" type="solo" title="Выйти" />
             </div>
           </div>
@@ -168,80 +180,3 @@ const Account = () => {
 };
 
 export default observer(Account);
-
-// <div className="profile-img">
-//   <img src={`http://localhost:5000/${store.user.avatar}`} />
-//   <div className="edit-icon">
-//     <svg
-//       color="currentColor"
-//       xmlns="http://www.w3.org/2000/svg"
-//       viewBox="0 0 15 15"
-//       className="sc-dkrGBB jhVyiZ  css-17jtmv1"
-//       width="24"
-//       height="24"
-//     >
-//       <path
-//         fill="currentColor"
-//         d="M8.05 4.75L10.25 6.95L6.35 10.85C6.25 10.95 6.15 11 6 11H4.5C4.2 11 4 10.8 4 10.5V9C4 8.85 4.05 8.75 4.15 8.65L8.05 4.75ZM11.85 4.65C12.05 4.85 12.05 5.15 11.85 5.35L10.95 6.25L8.75 4.05L9.65 3.15C9.85 2.95 10.15 2.95 10.35 3.15L11.85 4.65Z"
-//         className="sc-eDvShL YFXNM"
-//       ></path>
-//     </svg>
-//   </div>
-// </div>
-
-// <div className="profile-title">
-//   <h3>
-//     {store.user.name} {store.user.surname}
-//   </h3>
-// </div>
-
-// <div className="profile-container">
-//   <div className="profile-container-inner">
-//     <div className="profile">
-//       <div className="profile-top">
-//         <form className="profile-form">
-//           <label className="profile-form__label">
-//             <div className="profile-form__inner">
-//               <div className="profile-img">
-//                 <input
-//                   onChange={handleFileChange}
-//                   type="file"
-//                   accept="*image"
-//                   multiple
-//                 />
-//                 <img src={`http://localhost:5000/${store.user.avatar}`} />
-//                 <div className="edit">
-//                   <svg
-//                     color="currentColor"
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     xmlnsXlink="http://www.w3.org/1999/xlink"
-//                     viewBox="0 0 15 15"
-//                     className="sc-dkrGBB jhVyiZ  css-17jtmv1"
-//                     width="24"
-//                     height="24"
-//                   >
-//                     <path
-//                       fill="currentColor"
-//                       d="M8.05 4.75L10.25 6.95L6.35 10.85C6.25 10.95 6.15 11 6 11H4.5C4.2 11 4 10.8 4 10.5V9C4 8.85 4.05 8.75 4.15 8.65L8.05 4.75ZM11.85 4.65C12.05 4.85 12.05 5.15 11.85 5.35L10.95 6.25L8.75 4.05L9.65 3.15C9.85 2.95 10.15 2.95 10.35 3.15L11.85 4.65Z"
-//                       className="sc-eDvShL YFXNM"
-//                     ></path>
-//                   </svg>
-//                 </div>
-//               </div>
-
-//               <div className="text-center">
-//                 <Title variant="h4">
-//                   {store.user.name} {store.user.surname}
-//                 </Title>
-//               </div>
-//             </div>
-//           </label>
-//         </form>
-//       </div>
-
-//       <div>
-//         <button></button>
-//       </div>
-//     </div>
-//   </div>
-// </div>;
